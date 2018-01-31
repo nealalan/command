@@ -1,5 +1,6 @@
-###
-``` $ find . -mindepth 2 -type f -print -exec mv {} . \;
+### Some comm&s
+
+```$ find . -mindepth 2 -type f -print -exec mv {} . \;
 
 
 
