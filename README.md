@@ -1,7 +1,7 @@
 ## Commands
 ### And stuff
 
-'''bash
+```bash
 # find all files in this directory and its sub-directories and execute mv with target directory . for each file found to move them to current directory.
 $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 
