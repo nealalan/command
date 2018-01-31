@@ -1,12 +1,16 @@
 ## Commands
-### And stuff
+
 
 ```bash
-# find all files in this directory and its sub-directories and execute mv with target directory . for each file found to move them to current directory.
+# DIRECTORY/FILE COLLAPSE
+# find all files in this directory and its sub-directories 
+# and execute mv with target directory . for each file found 
+# to move them to current directory.
 $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
-
 ```
 
+[View Jekyll Hacker Theme Page](https://pages-themes.github.io/hacker/)
+[View Jekyll Hacker Theme Src](https://github.com/pages-themes/hacker/edit/master/index.md) 
 
 ## Welcome to GitHub Pages
 
