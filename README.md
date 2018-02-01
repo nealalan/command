@@ -17,6 +17,23 @@ $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 # writes out the activity  on the system every 3 seconts
 $ white true ; do iostat -w 3 ; done
 ```
+## nc / netcat / TCP & UDP connections and listener
+There's a lot of stuff on search engines... i found it's useless to spend a lot of time on this command. But understand what it does.
+```bash
+# LISTEN FOR A CONNECTION ON PORT 42
+$ nc -l 42
+# CONNECT TO PORT 42 VIA THE LOOPBACK IP FROM ANOTHER TERM
+$ nc 127.0.0.1 42
+# either side can type and it will echo back
+# terminate the connection with ^D (EOF)
+```
+```bash
+# LISTEN INTO A FILE
+$ nc -l 43 > filename.receive
+# SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
+$ nc 127.0.0.1 43 < filename.send
+```
+
 ## searching
 ```bash
 # SEARCH A FILE FOR SPECIFIC CONTENT
