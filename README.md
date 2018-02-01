@@ -8,6 +8,11 @@
 # to move them to current directory.
 $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 ```
+```bash
+# SYSTEM IO MONITORING LOOP
+# writes out the activity  on the system every 3 seconts
+$ white true ; do iostat -w 3 ; done
+````
 
 [View Jekyll Hacker Theme Page](https://pages-themes.github.io/hacker/)
 
