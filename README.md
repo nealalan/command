@@ -16,9 +16,9 @@ $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 # SYSTEM IO MONITORING LOOP
 # writes out the activity  on the system every 3 seconts
 $ white true ; do iostat -w 3 ; done
-````
+```
 ## searching
-``bash
+```bash
 # SEARCH A FILE FOR SPECIFIC CONTENT
 # -H : print the filename of each match
 # --max-count=#
@@ -27,7 +27,7 @@ $ white true ; do iostat -w 3 ; done
 # -E : regex pattern search (or text search)
 $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ```
-(https://raw.githubusercontent.com/nealalan/command/master/grep-E.png)
+![](https://raw.githubusercontent.com/nealalan/command/master/grep-E.png)
 
 [View Jekyll Hacker Theme Page](https://pages-themes.github.io/hacker/)
 
