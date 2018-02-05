@@ -2,6 +2,10 @@
 
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
+## Useful CLI tools
+- xmodulo.com/useful-cli-tools-linux-system-admins.html
+
+
 ## files
 ```bash
 # DIRECTORY/FILE COLLAPSE
@@ -17,6 +21,7 @@ $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 # writes out the activity  on the system every 3 seconts
 $ white true ; do iostat -w 3 ; done
 ```
+- note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 ## networking 
 ### nc / netcat / TCP & UDP connections and listener
 There's a lot of stuff on search engines... i found it's useless to spend a lot of time on this command. But understand what it does.
@@ -80,6 +85,12 @@ particularly useful when searching for a file or searching for content in a file
 $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ```
 ![](https://raw.githubusercontent.com/nealalan/command/master/grep-E.png)
+
+## SQL
+- sqlmap
+
+## wordpress
+- wordpress-online-vulnerabilitty-scanners
 
 [View Jekyll Hacker Theme Page](https://pages-themes.github.io/hacker/)
 
