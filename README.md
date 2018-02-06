@@ -14,7 +14,7 @@
 # to move them to current directory.
 $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 ```
-## git / github
+## git / github / hub
 ```bash
 # CREATE SSH KEY TO ADD TO GITHUB
 $ ssh-keygen -t rsa -C "neal@email.com"
@@ -24,9 +24,13 @@ $ ssh -T git@github.com
 # so i pulled down something before I setup ssh and made a bunch of changes 
 # i wanted to push back. so I used this command to changed it to SSH push
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
-
 ```
-
+hub is a github utility that lets you *create a repo remotely* 
+- [https://hub.github.com/](https://hub.github.com/)
+- to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
+```bash
+# 
+```
 ## monitoring
 ```bash
 # SYSTEM IO MONITORING LOOP
