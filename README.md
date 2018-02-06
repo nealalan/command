@@ -14,6 +14,18 @@
 # to move them to current directory.
 $ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
 ```
+## git / github
+```bash
+# CREATE SSH KEY TO ADD TO GITHUB
+$ ssh-keygen -t rsa -C "neal@email.com"
+# TEST OUT THE SSH CONNECTION ON YOUR BOX
+$ ssh -T git@github.com
+# SET AN HTTPS CLONE TO AN SSH PUSH
+# so i pulled down something before I setup ssh and made a bunch of changes 
+# i wanted to push back. so I used this command to changed it to SSH push
+$ git remote set-url origin git@github.com:nealalan/nealalan.com.git
+
+```
 
 ## monitoring
 ```bash
