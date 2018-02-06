@@ -1,4 +1,4 @@
-## [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
+# [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
@@ -107,10 +107,5 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 
 ## wordpress
 - wordpress-online-vulnerabilitty-scanners
-
-[View Jekyll Hacker Theme Page](https://pages-themes.github.io/hacker/)
-
-[View Jekyll Hacker Theme Src](https://github.com/pages-themes/hacker/edit/master/index.md) 
-
 <br><br>
 [edit](https://github.com/nealalan/command/edit/master/README.md)
