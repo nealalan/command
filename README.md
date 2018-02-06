@@ -33,10 +33,14 @@ $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
 # writes out the activity  on the system every 3 seconts
 $ white true ; do iostat -w 3 ; done
 ```
+
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
+
 ## networking 
+
 ### nc / netcat / TCP & UDP connections and listener
 There's a lot of stuff on search engines... i found it's useless to spend a lot of time on this command. But understand what it does.
+
 ```bash
 # LISTEN FOR A CONNECTION ON PORT 42
 # i add -v to everything because I like verbosity
