@@ -37,7 +37,6 @@ hub is a github utility that lets you *create a repo remotely*
 # writes out the activity  on the system every 3 seconts
 $ white true ; do iostat -w 3 ; done
 ```
-
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## networking 
@@ -112,4 +111,5 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ## wordpress
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
-[edit](https://github.com/nealalan/command/edit/master/README.md)
+
+[[edit](https://github.com/nealalan/command/edit/master/README.md)]
