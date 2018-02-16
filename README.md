@@ -12,7 +12,9 @@
 # find all files in this directory and its sub-directories 
 # and execute mv with target directory . for each file found 
 # to move them to current directory.
-$ find . -mindepth 2 -type f -print -exec mv --backup=numbered {} . \;
+# Note: I tried adding mv --backup=numbered but this doesn't work
+#  so I added -n to keep from overwriting files with the same name
+$ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
 ## git / github / hub
 ```bash
@@ -35,7 +37,7 @@ hub is a github utility that lets you *create a repo remotely*
 ```bash
 # SYSTEM IO MONITORING LOOP
 # writes out the activity  on the system every 3 seconts
-$ white true ; do iostat -w 3 ; done
+$ while true ; do iostat -w 3 ; done
 ```
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
