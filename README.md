@@ -5,7 +5,6 @@
 ## Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
 
-
 ## files
 ```bash
 # DIRECTORY/FILE COLLAPSE
@@ -16,29 +15,36 @@
 #  so I added -n to keep from overwriting files with the same name
 $ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
+
 ## git / github / hub
+
+### git setup
 ```bash
 # CREATE SSH KEY TO ADD TO GITHUB
 $ ssh-keygen -t rsa -C "neal@email.com"
+
 # TEST OUT THE SSH CONNECTION ON YOUR BOX
 $ ssh -T git@github.com
+
 # SET AN HTTPS CLONE TO AN SSH PUSH
 # so i pulled down something before I setup ssh and made a bunch of changes 
 # i wanted to push back. so I used this command to changed it to SSH push
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
+
 ```
+
+### hub setup
 hub is a github utility that lets you *create a repo remotely* 
 - [https://hub.github.com/](https://hub.github.com/)
 - to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
-```bash
-# 
-```
+
 ## monitoring
 ```bash
 # SYSTEM IO MONITORING LOOP
 # writes out the activity  on the system every 3 seconts
 $ while true ; do iostat -w 3 ; done
 ```
+
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## networking 
@@ -61,6 +67,7 @@ $ nc -v -l 43 > filename.receive
 # SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
 $ nc -v 127.0.0.1 43 < filename.send
 ```
+
 ### nslookup - useless?
 ```bash
 # QUERY INTERNET NAME SERVERS
@@ -68,11 +75,13 @@ $ nc -v 127.0.0.1 43 < filename.send
 # -type=SOA : find out the server of authority = might not work
 $ nslookup neonaluminum.com
 ```
+
 ### whois - use this versus nslookup
 ```bash
 # QUERY IANA.ORG FOR DOMAIN INFO
 $ whois neonaluminum.com
 ```
+
 ### dig
 ```bash
 # DOMAIN INFORMATION GATHERING
@@ -83,6 +92,7 @@ $ dig +trace neonaluminum.com
 # pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
 $ dig neonaluminum.com ANY +noall +answer
 ```
+
 ### nmap
 nmap can be super noisy and really irritate anyone you run it against recommend you only run it again computers within your internal network or scanme.nmap.org
 ```bash
@@ -94,6 +104,7 @@ nmap can be super noisy and really irritate anyone you run it against recommend 
 # -p : port range
 $ nmap -A -T4 -r -p [1-9999] <address>
 ``` 
+
 ## searching
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
 ```bash
