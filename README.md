@@ -16,6 +16,15 @@
 $ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
 
+```bash
+# ARCHIVE/ZIP 
+# -r recursively through dirs
+# -dc a nice output
+# -9 max compression (no reason not to if storing on the cloud?!)
+# can use REGEX with it also :D
+```
+$ zip -r -dc -9 archive_name *
+
 ## git / github / hub
 
 ### git setup
@@ -124,5 +133,7 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ## wordpress
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
+
+
 
 [[edit](https://github.com/nealalan/command/edit/master/README.md)]
