@@ -22,8 +22,8 @@ $ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 # -dc a nice output
 # -9 max compression (no reason not to if storing on the cloud?!)
 # can use REGEX with it also :D
-```
 $ zip -r -dc -9 archive_name *
+```
 
 ## git / github / hub
 
