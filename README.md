@@ -102,6 +102,14 @@ $ dig +trace neonaluminum.com
 $ dig neonaluminum.com ANY +noall +answer
 ```
 
+### maven
+apache maven will build your jar files from java source packages. 
+```bach
+# from your project-dir/pom.xml folder
+$ mvn package
+# you should end up with BUILD SUCCESSFUL
+
+
 ### nmap
 nmap can be super noisy and really irritate anyone you run it against recommend you only run it again computers within your internal network or scanme.nmap.org
 ```bash
