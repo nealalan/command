@@ -107,7 +107,7 @@ apache maven will build your jar files from java source packages.
 ```bach
 # from your project-dir/pom.xml folder
 $ mvn package
-# you should end up with BUILD SUCCESSFUL
+# you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
 
 
 ### nmap
