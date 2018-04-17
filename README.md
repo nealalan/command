@@ -130,6 +130,15 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ## SQL
 - sqlmap
 
+## Upgrading
+```bash
+# Mac
+$ brew upgrade
+# Ubuntu
+$ apt update
+$ apt upgrade
+```
+
 ## wordpress
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
