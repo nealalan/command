@@ -4,6 +4,10 @@
 
 ## Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
+```bash
+# DARWIN / MAC -- DISPLAY INSTALLABLE TOOLS USING BREW
+$ brew search
+```
 
 ## files
 ```bash
@@ -39,7 +43,6 @@ $ ssh -T git@github.com
 # so i pulled down something before I setup ssh and made a bunch of changes 
 # i wanted to push back. so I used this command to changed it to SSH push
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
-
 ```
 
 ### hub setup
@@ -54,7 +57,10 @@ hub is a github utility that lets you *create a repo remotely*
 $ while true ; do iostat -w 3 ; done
 
 # TOP -- display and update sorted information about processes
-# top -o cpu -O +rsize -s 3
+$ top -o cpu -O +rsize -s 3
+
+# IFTOP -- Interface top in a refreshing screen with cum view
+$ sudo iftop -i en0
 ```
 
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
@@ -82,6 +88,11 @@ $ nc -v 127.0.0.1 43 < filename.send
 ```bash
 ### netstat -- show active connections (port) and sockets
 $ netstat -a | more
+```
+
+### nethogs
+```bash
+# NETHOGS -- monitor process socket connections 
 ```
 
 ### nslookup - useless?
