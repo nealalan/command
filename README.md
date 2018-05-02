@@ -52,6 +52,9 @@ hub is a github utility that lets you *create a repo remotely*
 # SYSTEM IO MONITORING LOOP
 # writes out the activity  on the system every 3 seconts
 $ while true ; do iostat -w 3 ; done
+
+# TOP -- display and update sorted information about processes
+# top -o cpu -O +rsize -s 3
 ```
 
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
@@ -75,6 +78,10 @@ $ nc -v 127.0.0.1 42
 $ nc -v -l 43 > filename.receive
 # SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
 $ nc -v 127.0.0.1 43 < filename.send
+```
+```bash
+### netstat -- show active connections (port) and sockets
+$ netstat -a | more
 ```
 
 ### nslookup - useless?
@@ -142,6 +149,12 @@ particularly useful when searching for a file or searching for content in a file
 $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ```
 ![](https://raw.githubusercontent.com/nealalan/command/master/grep-E.png)
+
+```bash
+# LSOF -- list open files
+# huge man file and particularly useful, note security issues with it
+$ lsof > ~/open_files.txt
+```
 
 ## SQL
 - sqlmap
