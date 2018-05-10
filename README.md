@@ -2,6 +2,13 @@
 
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
+## Mac Package Managers
+```bash
+$ xcode-select --install
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew doctor
+```
+
 ## Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
 ```bash
@@ -177,6 +184,17 @@ $ brew upgrade
 # Ubuntu
 $ apt update
 $ apt upgrade
+```
+
+## images
+```bash
+# ExifTool - Read, Write and Edit Meta Info 
+# Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
+# Install:
+$ brew install exiftool
+
+# Use:
+
 ```
 
 ## wordpress
