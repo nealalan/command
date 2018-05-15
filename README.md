@@ -57,6 +57,12 @@ hub is a github utility that lets you *create a repo remotely*
 - [https://hub.github.com/](https://hub.github.com/)
 - to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
 
+## curl 
+```bash
+# Find system settings from the command line
+$ curl http://169.254.169.254/
+```
+
 ## monitoring
 ```bash
 # SYSTEM IO MONITORING LOOP
