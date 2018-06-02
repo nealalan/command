@@ -13,6 +13,17 @@ $ brew doctor
 # INSTALL IFTOP
 $ brew install iftop
 ```
+```bash
+# SEE WHAT'S INSTALLED
+$ brew list && brew cask list
+$ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
+$ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
+# CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
+$ brew bundle dump
+$ brew Brewfile
+# ... IN UBUNTU
+$ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
+```
 
 ## Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
