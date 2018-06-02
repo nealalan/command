@@ -26,7 +26,6 @@ $ brew search
 #  so I added -n to keep from overwriting files with the same name
 $ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
-
 ```bash
 # ARCHIVE/ZIP 
 # -r recursively through dirs
