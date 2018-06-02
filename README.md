@@ -4,9 +4,14 @@
 
 ## Mac Package Managers
 ```bash
+# INSTALL APPLE XCODE COMMAND LINE DEV TOOLS
 $ xcode-select --install
+# INSTALL HOMEBREW / BREW
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# CHECK STATUS OF BREW
 $ brew doctor
+# INSTALL IFTOP
+$ brew install iftop
 ```
 
 ## Useful CLI tools
