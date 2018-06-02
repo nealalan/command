@@ -36,8 +36,8 @@ $ zip -r -dc -9 archive_name *
 ```
 ```bash
 # SYNC FILES ACROSS COMPUTERS
-$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes 
-~/Pictures/ Neal@192.168.0.103:/Users/neal/Pictures/All_Photos > 
+$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes |
+~/Pictures/ Neal@192.168.0.103:/Users/neal/Pictures/All_Photos > |
 ~/Desktop/pic_bkp_$(date +"%Y%m%d_%H%M%S").txt
 ```
 
