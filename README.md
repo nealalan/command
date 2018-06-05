@@ -106,13 +106,41 @@ $ sudo iftop -i en0
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## networking 
-
-### nc / netcat / TCP & UDP connections and listener
-There's a lot of stuff on search engines... i found it's useless to spend a lot of time on this command. But understand what it does.
+```bash
+# IFCONFIG - network interface configuration & routing for the computer ports
+$ ifconfig en0
+# NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+#  -r show the routing tables
+#  -s Show per-protocol statistics
+#  -tu tcp & udp
+$ netstat
+$ netstat -a | more
+# SS
+$ ss -l
+$ ss -ntp
+$ ss -tupl
+# NSLOOKUP - query Internet name servers interactively
+# PING
+# DIG
+# CURL
+```
 
 ```bash
-# LISTEN FOR A CONNECTION ON PORT 42
-# i add -v to everything because I like verbosity
+$ nmap localhost
+$ scutil --proxy
+$ scutil --dns
+$ scutil --get ComputerName
+```
+
+### nc / netcat 
+TCP & UDP connections and listener
+```bash
+# NC - PULL A WEBPAGE
+$ nc localhost 80
+# NC - PORT SCANNING
+$ nc -v -w 1 server2.example.com -z 1-1000
+# NC - LISTEN FOR A CONNECTION ON PORT 42
+#  -v add verbosity
 $ nc -v -l 42
 # CONNECT TO PORT 42 VIA THE LOOPBACK IP FROM ANOTHER TERM
 $ nc -v 127.0.0.1 42
@@ -120,15 +148,17 @@ $ nc -v 127.0.0.1 42
 # terminate the connection with ^D (EOF)
 ```
 ```bash
+# NC - SEND FILES
+$ nc -lp 1234 > stuff_to_send.txt
+$ nc -w 1 server 1234 < stuff.txt
+
 # LISTEN INTO A FILE
 $ nc -v -l 43 > filename.receive
 # SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
 $ nc -v 127.0.0.1 43 < filename.send
 ```
-```bash
-### netstat -- show active connections (port) and sockets
-$ netstat -a | more
-```
+
+
 
 ### nethogs
 ```bash
@@ -158,14 +188,6 @@ $ dig neonaluminum.com
 $ dig +trace neonaluminum.com
 # pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
 $ dig neonaluminum.com ANY +noall +answer
-```
-
-### local info
-```bash
-$ nmap localhost
-$ scutil --proxy
-$ scutil --dns
-$ scutil --get ComputerName
 ```
 
 ### maven
@@ -219,7 +241,7 @@ $ apt update
 $ apt upgrade
 ```
 
-## images
+## images & graphics
 ```bash
 # ExifTool - Read, Write and Edit Meta Info 
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
@@ -227,13 +249,43 @@ $ apt upgrade
 $ brew install exiftool
 
 # Use:
+```
 
+## encryption
+```bash
+# MD5 - calculate a message-digest fingerprint (checksum) for a file
+# syntax: md5 [-pqrtx] [-s string] [file ...]
+```
+
+## users & accounts
+```bash
+# LAST - shows the last users to log in
 ```
 
 ## wordpress
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
 
+## COMMANDS 101 
+Basic commands to navigate use the command line
+```bash
+# ECHO - write arguments to the standard output
+$ echo "cat" > cat.txt
+$ echo $PATH
+# CAT - concatenate and print files
+#  -n number the output lines starting at 1
+#  -s squeeze out blank lines
+#  -t -v display non-printable characters
+$ cat cat.txt
+$ cat cat.txt cat.txt > 2cats.txt
+# HEAD
+# TAIL - continue to print out an open file such as a log
+$ tail -f /var/log/wifi.log
+# AWK [ -F fs ] [ -v var=value ] [ 'prog' | -f progfile ] [ file ...  ]
+# PS - process status
+$ ps aux
+$ ps -u root
 
+```
 
 [[edit](https://github.com/nealalan/command/edit/master/README.md)]
