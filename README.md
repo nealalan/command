@@ -136,6 +136,10 @@ $ dig neonaluminum.com ANY +noall +answer
 
 # WHOIS - QUERY IANA.ORG FOR DOMAIN INFO
 $ whois neonaluminum.com
+
+# SHODAN
+# DIRB
+$ dirb 10.10.50.2
 ```
 
 
@@ -180,12 +184,25 @@ nmap can be super noisy and really irritate anyone you run it against recommend 
 # -r : scan ports consecutively
 # -p : port range
 $ nmap -A -T4 -r -p [1-9999] <address>
+#
+$ nmap -sC
 
 $ nmap localhost
 $ scutil --proxy
 $ scutil --dns
 $ scutil --get ComputerName
 ``` 
+## METASPLOIT
+```bash
+# metaspolit console
+$ msfconsole
+$4search shellshock
+$ show options
+# LOAD PARMS
+$ set RHOST 10.10.50.2
+$ set TARGETURI /cgi-bin/test-cgi
+
+```
 
 ## SEARCHING
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
@@ -218,13 +235,20 @@ $ mvn package
 ### SQL
 - sqlmap
 
-## Upgrading
+## UPDATES & UPGRADES
 ```bash
-# Mac
+# Mac / Darwin
 $ brew upgrade
-# Ubuntu
+```
+
+### Ubuntu
+
+#  -y default yes
 $ apt update
 $ apt upgrade
+$ apt install <package>
+$ apt-cache search <package>
+
 ```
 
 ## images & graphics
