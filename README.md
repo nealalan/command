@@ -2,7 +2,9 @@
 
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
-## Mac Package Managers
+## UPDATES, UPGRADES & PACKAGE MANAGERS
+
+### Mac Package Managers (Darwin)
 ```bash
 # INSTALL APPLE XCODE COMMAND LINE DEV TOOLS
 $ xcode-select --install
@@ -12,8 +14,7 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 $ brew doctor
 # INSTALL IFTOP
 $ brew install iftop
-```
-```bash
+
 # SEE WHAT'S INSTALLED
 $ brew list && brew cask list
 $ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
@@ -23,13 +24,23 @@ $ brew bundle dump
 $ brew Brewfile
 # ... IN UBUNTU
 $ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
+
+# CHECK FOR UPDATES & UPGRADE
+$ brew update
+$ brew upgrade
 ```
 
-## Useful CLI tools
-- xmodulo.com/useful-cli-tools-linux-system-admins.html
+### Ubuntu Package Manager
 ```bash
-# DARWIN / MAC -- DISPLAY INSTALLABLE TOOLS USING BREW
-$ brew search
+# APT / APT-GET -provides a high-level command line interface for the package management system
+#  -y default yes
+#  update = d/l package info from all configured sources
+#  upgrade = install avai upgrades of all packages 
+$ apt update
+$ apt upgrade
+$ apt install <package>
+#  currently installed on the system from the sources configured via sources.list
+$ apt-cache search <package>
 ```
 
 ## files
@@ -222,6 +233,14 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 # huge man file and particularly useful, note security issues with it
 $ lsof > ~/open_files.txt
 ```
+## SOCIAL ENGINEERING
+```bash
+# Discovery
+# Harvester
+
+```
+
+
 
 ## DEV
 ### maven
@@ -235,21 +254,7 @@ $ mvn package
 ### SQL
 - sqlmap
 
-## UPDATES & UPGRADES
-```bash
-# Mac / Darwin
-$ brew upgrade
-```
 
-### Ubuntu
-
-#  -y default yes
-$ apt update
-$ apt upgrade
-$ apt install <package>
-$ apt-cache search <package>
-
-```
 
 ## images & graphics
 ```bash
@@ -266,9 +271,57 @@ $ brew install exiftool
 # syntax: md5 [-pqrtx] [-s string] [file ...]
 ```
 
-## users & accounts
+## SYSTEM ADMINISTRATION
+
 ```bash
-# LAST - shows the last users to log in
+ubuntu@nealalan:~$ uname -a
+Linux nealalan 4.4.0-1060-aws #69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+### processes
+```bash
+$ systemctl start
+$ systemctl stop
+$ systemctl status <servicename>
+
+# journalctl - Log file for the system to help debug when a server doesn’t start
+$ journalctl -xe
+
+# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
+# service <servicename> status
+$ service --status-all
+
+```
+
+### remote connections
+```bash
+$ ssh -i <pem> <user>@<ip>
+$ scp -i <pem> <local> <dest>
+```
+
+### users & accounts
+```bash
+$ adduser
+$ addgroup
+$ chown
+
+# FILE ACCESS CONTROL LIST
+$ getfacl <file>
+$ setfacl -m u:user2:rwx example/
+$ setfacl -m g:group1:rwx ./
+
+# ADDING A NEW USER
+$ sudo adduser neal
+$ sudo su neal (either way)
+$ cd /home/neal
+$ sudo mkdir .ssh
+$ sudo ssh-keygen
+$ sudo usermod -aG sudo neal   // add to group sudo
+$ sudo cat nealkey.pub > authorized_keys
+$ sudo nano /etc/ssh/sshd_config
+#     UsePAM yes
+#     allowAllowUsers neal
+
 ```
 
 ## wordpress
@@ -294,7 +347,40 @@ $ tail -f /var/log/wifi.log
 # PS - process status
 $ ps aux
 $ ps -u root
+# DISK USAGE
+$ df -ah
+# DISK USAGE by folder
+$ du -sh
 
+
+# LOCATE
+
+EXPORT
+$ export PATH=$PATH:$HOME/.local/bin
+```
+
+```bash
+# STREAM EDITOR
+$ sed -f <text-commands>
+# deleted 1 and 3
+$ seq 10 | sed -e 1d -e 3d
+$ seq 10 | sed -e '1d;3d'
+# replace sour char with dest char in order
+$ sed y/source-chars/dest-chars/
+# replaces all numbers in format of 999-99-9999 or 9 numbers in a row
+$ sed "y/123/abc/"
+$ sed -ri ':1
+         s/(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)/\1XXX-XX-XXXX\2/g
+         s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
+         t1' <ssn.txt>
+
+```
+
+## More Useful CLI tools
+- xmodulo.com/useful-cli-tools-linux-system-admins.html
+```bash
+# DARWIN / MAC -- DISPLAY INSTALLABLE TOOLS USING BREW
+$ brew search
 ```
 
 [[edit](https://github.com/nealalan/command/edit/master/README.md)]
