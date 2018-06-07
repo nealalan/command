@@ -84,13 +84,7 @@ hub is a github utility that lets you *create a repo remotely*
 - [https://hub.github.com/](https://hub.github.com/)
 - to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
 
-## curl 
-```bash
-# Find system settings from the command line
-$ curl http://169.254.169.254/
-```
-
-## monitoring
+## MONITORING
 ```bash
 # SYSTEM IO MONITORING LOOP
 # writes out the activity  on the system every 3 seconts
@@ -102,35 +96,48 @@ $ top -o cpu -O +rsize -s 3
 # IFTOP -- Interface top in a refreshing screen with cum view
 $ sudo iftop -i en0
 ```
-
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
-## networking 
+## NETWORKING
 ```bash
+# CURL - Find system settings from the command line
+$ curl http://169.254.169.254/
+
 # IFCONFIG - network interface configuration & routing for the computer ports
 $ ifconfig en0
+
 # NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
 #  -r show the routing tables
 #  -s Show per-protocol statistics
 #  -tu tcp & udp
 $ netstat
 $ netstat -a | more
+
 # SS
 $ ss -l
 $ ss -ntp
 $ ss -tupl
-# NSLOOKUP - query Internet name servers interactively
+
+# NSLOOKUP - QUERY INTERNET NAME SERVERS INTERACTIVELY
+# returns the domain name server the IP to domain resolution came from
+# -type=SOA : find out the server of authority = might not work
+$ nslookup neonaluminum.com
 # PING
-# DIG
+
+# DIG - DOMAIN INFORMATION GATHERING
+# primarily used for DNS queries of A, TXT, MX, SOA, NS record sets
+$ dig neonaluminum.com
+# trace trace the domain server of authority (SOA)
+$ dig +trace neonaluminum.com
+# pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
+$ dig neonaluminum.com ANY +noall +answer
+
 # CURL
+
+# WHOIS - QUERY IANA.ORG FOR DOMAIN INFO
+$ whois neonaluminum.com
 ```
 
-```bash
-$ nmap localhost
-$ scutil --proxy
-$ scutil --dns
-$ scutil --get ComputerName
-```
 
 ### nc / netcat 
 TCP & UDP connections and listener
@@ -158,44 +165,9 @@ $ nc -v -l 43 > filename.receive
 $ nc -v 127.0.0.1 43 < filename.send
 ```
 
-
-
 ### nethogs
 ```bash
 # NETHOGS -- monitor process socket connections 
-```
-
-### nslookup - useless?
-```bash
-# QUERY INTERNET NAME SERVERS
-# returns the domain name server the IP to domain resolution came from
-# -type=SOA : find out the server of authority = might not work
-$ nslookup neonaluminum.com
-```
-
-### whois - use this versus nslookup
-```bash
-# QUERY IANA.ORG FOR DOMAIN INFO
-$ whois neonaluminum.com
-```
-
-### dig
-```bash
-# DOMAIN INFORMATION GATHERING
-# primarily used for DNS queries of A, TXT, MX, SOA, NS record sets
-$ dig neonaluminum.com
-# trace trace the domain server of authority (SOA)
-$ dig +trace neonaluminum.com
-# pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
-$ dig neonaluminum.com ANY +noall +answer
-```
-
-### maven
-apache maven will build your jar files from java source packages. 
-```bach
-# from your project-dir/pom.xml folder
-$ mvn package
-# you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
 ```
 
 ### nmap
@@ -208,9 +180,14 @@ nmap can be super noisy and really irritate anyone you run it against recommend 
 # -r : scan ports consecutively
 # -p : port range
 $ nmap -A -T4 -r -p [1-9999] <address>
+
+$ nmap localhost
+$ scutil --proxy
+$ scutil --dns
+$ scutil --get ComputerName
 ``` 
 
-## searching
+## SEARCHING
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
 ```bash
 # SEARCH A FILE FOR SPECIFIC CONTENT
@@ -229,7 +206,16 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 $ lsof > ~/open_files.txt
 ```
 
-## SQL
+## DEV
+### maven
+apache maven will build your jar files from java source packages. 
+```bach
+# from your project-dir/pom.xml folder
+$ mvn package
+# you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
+```
+
+### SQL
 - sqlmap
 
 ## Upgrading
@@ -247,7 +233,6 @@ $ apt upgrade
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
 # Install:
 $ brew install exiftool
-
 # Use:
 ```
 
