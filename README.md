@@ -64,9 +64,8 @@ $ zip -r -dc -9 archive_name *
 I use this to sync photos from the source to my iMac
 ```bash
 # SYNC FILES ACROSS COMPUTERS
-$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes |
-~/Pictures/ Neal@192.168.0.103:/Users/neal/Pictures/All_Photos > |
-~/Desktop/pic_bkp_$(date +"%Y%m%d_%H%M%S").txt
+# --dry-run is obviously removed for the real xfer
+$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes ~/Pictures/ neal@192.168.1.42:/Users/Neal/Pictures/All_Photos > ~/Desktop/pic_bkp_$(date +"%Y%m%d_%H%M%S").txt
 ```
 I use this to sync music to backups and other computers
 ```bash
