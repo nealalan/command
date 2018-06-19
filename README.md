@@ -75,6 +75,16 @@ $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 
 ## git / github / hub
 
+### git 
+```bash
+
+$ git add *
+$ git status
+$ git commit -m "msg"
+$ git push
+
+```
+
 ### git setup
 ```bash
 # CREATE SSH KEY TO ADD TO GITHUB
@@ -357,7 +367,15 @@ $ du -sh
 EXPORT
 $ export PATH=$PATH:$HOME/.local/bin
 ```
+Directory linking using link / ln See also: [ln command](https://www.computerhope.com/unix/uln.htm)
+```bash
+# LN - link
+#  -s is a symbolic link
+$ sudo ln -s /home/ubuntu/sites-available sites-available
+$ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
+```
 
+Stream editing of data, useful with Regex to change contents of a file from the command line
 ```bash
 # STREAM EDITOR
 $ sed -f <text-commands>
