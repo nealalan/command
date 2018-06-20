@@ -75,12 +75,24 @@ $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 
 ## git / github / hub
 
+…or create a new repository on the command line
+```bash
+echo "# neonaluminum.com" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:nealalan/neonaluminum.com.git
+git push -u origin master
+```
+…or push an existing repository from the command line
+```bash
+git remote add origin git@github.com:nealalan/neonaluminum.com.git
+git push -u origin master
+```
+
 ### git 
 ```bash
-
-$ git add *
 $ git status
-$ git commit -m "msg"
 $ git push
 
 ```
