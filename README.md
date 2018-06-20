@@ -94,7 +94,7 @@ git push -u origin master
 ```bash
 $ git status
 $ git push
-
+$ git clone git@github.com:nealalan/command.git
 ```
 
 ### git setup
