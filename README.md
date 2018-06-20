@@ -96,6 +96,11 @@ $ git status
 $ git push
 $ git clone git@github.com:nealalan/command.git
 ```
+a trick i found on stackoverflow when .git/index.lock gives Permission Denied
+```bash
+$ sudo chown -R : .git  # change group
+$ sudo chmod -R 775 .git  # change permission
+```
 
 ### git setup
 ```bash
@@ -297,6 +302,14 @@ $ brew install exiftool
 ```bash
 ubuntu@nealalan:~$ uname -a
 Linux nealalan 4.4.0-1060-aws #69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+```
+```bash
+# CHGRP - change group ownership
+# Change the group of /u and subfiles to "admin".
+$ chgrp -hR admin /u
+# Change the current folder, all subfolders and files to the group "nealalan.com"
+$ chgrp -hR nealalan.com .
+              
 ```
 
 ### processes
