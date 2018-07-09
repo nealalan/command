@@ -290,18 +290,26 @@ Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~p
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
 # [Installing](https://www.sno.phy.queensu.ca/~phil/exiftool/install.html) exiftool:
 $ brew install exiftool
-# To show all metadata stored on a file
+# To show all metadata stored on a file AND THE FILE INFO (some info comes from the OS)
 $ exiftool photo.jpg
 $ exiftool photo.jpg | grep -E 'File Name|Create Date'
 ```
 A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
 ```bash
 # this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
-#  Note:  
-$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./
-$ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./
+#  Note: filtering out PNG and MP4 files. 
+$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
+$ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
 # this will rename Ex:
-$ exiftool '-testname<%f-$imagesize.%e' ./
+$ exiftool '-testname<%f-$imagesize.%e' ./*.JPG
+$ exiftool '-FileName<%f-$imagesize.%e' ./*.JPG
+```
+Note: to rename a file using the date for an iOS PNG that doesn't stote the CreateDate, we can use the -FileCreateDate. It is possible to use an exiftool command to update the exif CreateDate using the FileCreateDate info, but I'm choosing not to do that since the scope for me is just to rename the files.
+```bash
+$ exiftool "-testname<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
+$ exiftool "-FileName<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
+$ exiftool '-testname<%f-$imagesize.%e' ./*.PNG
+$ exiftool '-FileName<%f-$imagesize.%e' ./*.PNG
 ```
 Moving files
 ```bash
@@ -386,6 +394,7 @@ Basic commands to navigate use the command line
 # ECHO - write arguments to the standard output
 $ echo "cat" > cat.txt
 $ echo $PATH
+$ echo $(date)
 # CAT - concatenate and print files
 #  -n number the output lines starting at 1
 #  -s squeeze out blank lines
