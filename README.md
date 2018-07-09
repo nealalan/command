@@ -292,6 +292,7 @@ Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~p
 $ brew install exiftool
 # To show all metadata stored on a file
 $ exiftool photo.jpg
+$ exiftool photo.jpg | grep -E 'File Name|Create Date'
 ```
 A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
 ```bash
