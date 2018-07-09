@@ -298,10 +298,10 @@ A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil
 ```bash
 # this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
 #  Note:  
-$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S_%f.%%e  ./
-$ exiftool "-FileName<CreateDate" -d "%Y%m%d_%H%M%S_%f.%%e" ./
+$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./
+$ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./
 # this will rename Ex:
-$ exiftool '-testname<%f_$imagesize.%e' ./
+$ exiftool '-testname<%f-$imagesize.%e' ./
 ```
 Moving files
 ```bash
