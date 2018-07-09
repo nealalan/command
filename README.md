@@ -316,6 +316,8 @@ Moving files
 # move from DIR into folders by image date
 $ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
 ```
+Incase you do want to update PNG metadata CreateDate you can do it like this
+!(https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
 
 ## encryption
 ```bash
