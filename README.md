@@ -283,12 +283,29 @@ $ mvn package
 
 
 ## images & graphics
+### ExifTool
+Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
 ```bash
 # ExifTool - Read, Write and Edit Meta Info 
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
-# Install:
+# [Installing](https://www.sno.phy.queensu.ca/~phil/exiftool/install.html) exiftool:
 $ brew install exiftool
-# Use:
+# To show all metadata stored on a file
+$ exiftool photo.jpg
+```
+A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
+```bash
+# this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
+#  Note:  
+$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S_%f.%%e  ./
+$ exiftool "-FileName<CreateDate" -d "%Y%m%d_%H%M%S_%f.%%e" ./
+# this will rename Ex:
+$ exiftool '-testname<%f_$imagesize.%e' ./
+```
+Moving files
+```bash
+# move from DIR into folders by image date
+$ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
 ```
 
 ## encryption
