@@ -259,15 +259,20 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 # huge man file and particularly useful, note security issues with it
 $ lsof > ~/open_files.txt
 ```
+## SCRIPTING
+```bash
+# Don't forget:
+$ chmod +x script.sh
+```
+- [Bash Scripting Cheatsheet](https://devhints.io/bash)
+- [Wikibooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting)
+
 ## SOCIAL ENGINEERING
 ```bash
 # Discovery
 # Harvester
 
 ```
-
-
-
 ## DEV
 ### maven
 apache maven will build your jar files from java source packages. 
