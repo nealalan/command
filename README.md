@@ -451,6 +451,58 @@ $ sed -ri ':1
          t1' <ssn.txt>
 
 ```
+### Mac / Darwin Specific Commands
+Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
+```bash
+$ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
+$ defaults write com.apple.finder AppleShowAllFiles YES && killall Finder
+```
+Hide everythign on the Desktop and stop files from being drug to it
+```bash
+$ defaults write com.apple.finder CreateDesktop -bool false && killall Finder
+```
+Set where screenshots from PNG to JPG and location they are saved to
+```bash
+$ defaults write com.apple.screencapture location ~/Desktop/Screenshots
+$ defaults write com.apple.screencapture type jpg && killall SystemUIServer
+```
+Always show the ~/Library folder 
+```bash
+$ chflags nohidden ~/Library/
+```
+Show the ~/.ssh folder as ~/ssh
+```bash
+$ ln -s ~/.ssh ~/ssh
+```
+Speed up TimeMachine Backups [link](https://www.defaults-write.com/speed-up-time-machine-backups/#more-1371)
+```bash
+# only persists until a reboot
+$ sudo sysctl debug.lowpri_throttle_enabled=0
+# slow back down without a reboot
+$ sudo sysctl debug.lowpri_throttle_enabled=1
+```
+Expand the Save Panel by default
+```bash
+$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+# use false to turn this off
+```
+Force text edit to default to plain text vs RTF format
+```bash
+$ defaults write com.apple.TextEdit RichText -int 0
+# Undo using:
+$ defaults delete com.apple.TextEdit RichText
+```
+Add a blank icon to the dock, move it around and add another...
+```bash
+$ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock
+```
+Set the max size to a time machine backup to 250GB (useful when multiple machines backup to the same drive)
+```bash
+$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -integer 256000
+# To reset to no limit
+$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
+```
 
 ## More Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
