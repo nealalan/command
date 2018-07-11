@@ -173,7 +173,7 @@ header .downloads a strong {
 section {
   /*width:500px;
   float:right;*/
-  padding-left: 320px;
+  padding-left: 50px;
   padding-bottom:50px;
 }
 
@@ -189,7 +189,7 @@ hr {
 }
 
 footer {
-  padding-left: 320px;
+  padding-left: 50px;
   float:left;
   bottom:50px;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -238,7 +238,7 @@ footer {
 }
 
 
-@media print, screen and (max-width: 720px) {
+@media print, screen and (max-width: 800px) {
   body {
     word-wrap:break-word;
   }
