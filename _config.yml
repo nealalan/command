@@ -13,7 +13,6 @@ custom_head: false
 custom_sidebar: false
 custom_footer: false
 gems:
-  - jekyll-sitemap
   - jekyll-mentions
   - jemoji
   - jekyll-redirect-from
