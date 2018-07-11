@@ -27,49 +27,10 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="{{ '/' | relative_url }}"><img src="{{ site.logo_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        {% if site.github.is_user_page %}
           <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}
-
-        {% if site.show_downloads %}
-          <ul class="downloads">
-            <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-            <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-            <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-          </ul>
-        {% endif %}
-
-      {% if site.custom_sidebar %}
-          {% include sidebar.html %}
-      {% endif %}
-        
       </header>
       <section>
-      <div id="tools-buttons" style="width: 100%; text-align: right">
-        {{page.relative_path}}
-        {% if site.use_github_wiki %}
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{url | remove: '.html' | append: ''}}/_edit">Edit</a></span>
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{url | remove: '.html' | append: ''}}/_history">History</a></span>
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{url | remove: '.html' | append: '.md'}}/">Source</a></span>
-        {% else %}
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/edit/{{site.git_branch}}{{{page.folder}}{{url | remove: '.html' | append: '.md'}}">Edit</a></span>
-          {% if site.use_prose_io %}
-          <span class="tools-element"><a target="_blank" href="http://prose.io/#{{site.github.repository_nwo}}/edit/{{site.git_branch}}{{{page.folder}}{{url | remove: '.html' | append: '.md'}}">Edit with Prose.io</a></span>
-          {% endif %}
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/commits/{{site.git_branch}}{{{page.folder}}{{url | remove: '.html' | append: '.md'}}">History</a></span>
-          <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/blob/{{site.git_branch}}{{{page.folder}}{{url | remove: '.html' | append: '.md'}}">Source</a></span>
-        {% endif %}
-        
 
-      </div>
-        
-      <div id="toc"></div>
- 
       <div id="content">
         {{ content }}
       </div>
