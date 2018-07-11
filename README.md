@@ -1,7 +1,5 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
-- [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
-
 ## UPDATES, UPGRADES & PACKAGE MANAGERS
 
 ### Mac Package Managers (Darwin)
@@ -43,7 +41,7 @@ $ apt install <package>
 $ apt-cache search <package>
 ```
 
-## files
+## FILES
 ```bash
 # DIRECTORY/FILE COLLAPSE
 # find all files in this directory and its sub-directories 
@@ -73,8 +71,8 @@ I use this to sync music to backups and other computers
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 ```
 
-## git / github / hub
-
+## GIT
+First time using a repo
 …or create a new repository on the command line
 ```bash
 echo "# neonaluminum.com" >> README.md
@@ -89,12 +87,12 @@ git push -u origin master
 git remote add origin git@github.com:nealalan/neonaluminum.com.git
 git push -u origin master
 ```
-
-### git 
+Regular daily use
 ```bash
 $ git status
 $ git push
 $ git clone git@github.com:nealalan/command.git
+
 ```
 a trick i found on stackoverflow when .git/index.lock gives Permission Denied
 ```bash
@@ -178,7 +176,7 @@ $ whois neonaluminum.com
 # DIRB
 $ dirb 10.10.50.2
 ```
-
+- [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
 ### nc / netcat 
 TCP & UDP connections and listener
@@ -240,7 +238,6 @@ $ set RHOST 10.10.50.2
 $ set TARGETURI /cgi-bin/test-cgi
 
 ```
-
 ## SEARCHING
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
 ```bash
@@ -273,7 +270,7 @@ $ chmod +x script.sh
 # Harvester
 
 ```
-## DEV
+## DEV TOOLS, CODE & SCRIPTING
 ### maven
 apache maven will build your jar files from java source packages. 
 ```bach
@@ -281,13 +278,10 @@ apache maven will build your jar files from java source packages.
 $ mvn package
 # you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
 ```
-
 ### SQL
 - sqlmap
 
-
-
-## images & graphics
+## IMAGES & GRAPHICS
 ### ExifTool
 Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
 ```bash
@@ -324,14 +318,12 @@ $ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
 Incase you do want to update PNG metadata CreateDate you can do it like this
 ![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
 
-## encryption
+## ENCRYPTION
 ```bash
 # MD5 - calculate a message-digest fingerprint (checksum) for a file
 # syntax: md5 [-pqrtx] [-s string] [file ...]
 ```
-
 ## SYSTEM ADMINISTRATION
-
 ```bash
 ubuntu@nealalan:~$ uname -a
 Linux nealalan 4.4.0-1060-aws #69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
@@ -344,7 +336,6 @@ $ chgrp -hR admin /u
 $ chgrp -hR nealalan.com .
               
 ```
-
 ### processes
 ```bash
 $ systemctl start
@@ -357,9 +348,7 @@ $ journalctl -xe
 # SHOW STATUS OF WHAT'S CURRENTLY RUNNING
 # service <servicename> status
 $ service --status-all
-
 ```
-
 ### remote connections
 ```bash
 $ ssh -i <pem> <user>@<ip>
@@ -391,7 +380,7 @@ $ sudo nano /etc/ssh/sshd_config
 
 ```
 
-## wordpress
+## WORDPRESS
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
 
@@ -506,6 +495,7 @@ $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
 
 ## More Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
+
 ```bash
 # DARWIN / MAC -- DISPLAY INSTALLABLE TOOLS USING BREW
 $ brew search
