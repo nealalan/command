@@ -16,8 +16,12 @@ CAT - concatenate and print files
 $ cat cat.txt
 $ cat cat.txt cat.txt > 2cats.txt
 ```
-HEAD & TAIL - continue to print out an open file such as a log
+HEAD (display the first lines of a file) & TAIL (display the last part of a file)
 ```bash
+# head [-n count | -c bytes] [file ...]
+$ head -n1 file
+# tail [-F | -f | -r] [-q] [-b number | -c number | -n number] [file ...]
+# continue to print out an open file such as a log, while it is written to
 $ tail -f /var/log/wifi.log
 ```
 PS - process status
