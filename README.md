@@ -1,7 +1,121 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
-## UPDATES, UPGRADES & PACKAGE MANAGERS
+## COMMANDS 101 
+Basic commands to navigate use the command line
+ECHO - write arguments to the standard output
+```bash
+$ echo "cat" > cat.txt
+$ echo $PATH
+$ echo $(date)
+```
+CAT - concatenate and print files
+```bash
+#  -n number the output lines starting at 1
+#  -s squeeze out blank lines
+#  -t -v display non-printable characters
+$ cat cat.txt
+$ cat cat.txt cat.txt > 2cats.txt
+```
+HEAD & TAIL - continue to print out an open file such as a log
+```bash
+$ tail -f /var/log/wifi.log
+```
+PS - process status
+AWK [ -F fs ] [ -v var=value ] [ 'prog' | -f progfile ] [ file ...  ]
+```bash
+$ ps aux
+$ ps -u root
+```
+DISK USAGE
+```bash
+$ df -ah
+# DISK USAGE by folder
+$ du -sh
+```
+LOCATE
+```bash
+```
+EXPORT
+```bash
+$ export PATH=$PATH:$HOME/.local/bin
+```
+LINK, LN, See also: [ln command](https://www.computerhope.com/unix/uln.htm)
+```bash
+# LN - link
+#  -s is a symbolic link
+$ sudo ln -s /home/ubuntu/sites-available sites-available
+$ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
+```
+STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
+```bash
+$ sed -f <text-commands>
+# deleted 1 and 3
+$ seq 10 | sed -e 1d -e 3d
+$ seq 10 | sed -e '1d;3d'
+# replace sour char with dest char in order
+$ sed y/source-chars/dest-chars/
+# replaces all numbers in format of 999-99-9999 or 9 numbers in a row
+$ sed "y/123/abc/"
+$ sed -ri ':1
+         s/(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)/\1XXX-XX-XXXX\2/g
+         s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
+         t1' <ssn.txt>
 
+```
+### Mac / Darwin Specific Commands
+Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
+```bash
+$ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
+$ defaults write com.apple.finder AppleShowAllFiles YES && killall Finder
+```
+Hide everythign on the Desktop and stop files from being drug to it
+```bash
+$ defaults write com.apple.finder CreateDesktop -bool false && killall Finder
+```
+Set where screenshots from PNG to JPG and location they are saved to
+```bash
+$ defaults write com.apple.screencapture location ~/Desktop/Screenshots
+$ defaults write com.apple.screencapture type jpg && killall SystemUIServer
+```
+Always show the ~/Library folder 
+```bash
+$ chflags nohidden ~/Library/
+```
+Show the ~/.ssh folder as ~/ssh
+```bash
+$ ln -s ~/.ssh ~/ssh
+```
+Speed up TimeMachine Backups [link](https://www.defaults-write.com/speed-up-time-machine-backups/#more-1371)
+```bash
+# only persists until a reboot
+$ sudo sysctl debug.lowpri_throttle_enabled=0
+# slow back down without a reboot
+$ sudo sysctl debug.lowpri_throttle_enabled=1
+```
+Expand the Save Panel by default
+```bash
+$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+# use false to turn this off
+```
+Force text edit to default to plain text vs RTF format
+```bash
+$ defaults write com.apple.TextEdit RichText -int 0
+# Undo using:
+$ defaults delete com.apple.TextEdit RichText
+```
+Add a blank icon to the dock, move it around and add another...
+```bash
+$ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock
+```
+Set the max size to a time machine backup to 250GB (useful when multiple machines backup to the same drive)
+```bash
+$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -integer 256000
+# To reset to no limit
+$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
+```
+
+## UPDATES, UPGRADES & PACKAGE MANAGERS
 ### Mac Package Managers (Darwin)
 ```bash
 # INSTALL APPLE XCODE COMMAND LINE DEV TOOLS
@@ -134,14 +248,20 @@ $ sudo iftop -i en0
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## NETWORKING
+IFCONFIG - use to find intranet IP address
 ```bash
-# CURL - Find system settings from the command line
+$ icfongif | grep 'inet'
+```
+CURL - use to find internet IP address
+```bash
 $ curl http://169.254.169.254/
-
-# IFCONFIG - network interface configuration & routing for the computer ports
+```
+IFCONFIG - network interface configuration & routing for the computer ports
+```bash
 $ ifconfig en0
-
-# NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+```
+NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+```bash
 #  -r show the routing tables
 #  -s Show per-protocol statistics
 #  -tu tcp & udp
@@ -384,114 +504,6 @@ $ sudo nano /etc/ssh/sshd_config
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
 
-## COMMANDS 101 
-Basic commands to navigate use the command line
-```bash
-# ECHO - write arguments to the standard output
-$ echo "cat" > cat.txt
-$ echo $PATH
-$ echo $(date)
-# CAT - concatenate and print files
-#  -n number the output lines starting at 1
-#  -s squeeze out blank lines
-#  -t -v display non-printable characters
-$ cat cat.txt
-$ cat cat.txt cat.txt > 2cats.txt
-# HEAD
-# TAIL - continue to print out an open file such as a log
-$ tail -f /var/log/wifi.log
-# AWK [ -F fs ] [ -v var=value ] [ 'prog' | -f progfile ] [ file ...  ]
-# PS - process status
-$ ps aux
-$ ps -u root
-# DISK USAGE
-$ df -ah
-# DISK USAGE by folder
-$ du -sh
-
-
-# LOCATE
-
-EXPORT
-$ export PATH=$PATH:$HOME/.local/bin
-```
-Directory linking using link / ln See also: [ln command](https://www.computerhope.com/unix/uln.htm)
-```bash
-# LN - link
-#  -s is a symbolic link
-$ sudo ln -s /home/ubuntu/sites-available sites-available
-$ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
-```
-
-Stream editing of data, useful with Regex to change contents of a file from the command line
-```bash
-# STREAM EDITOR
-$ sed -f <text-commands>
-# deleted 1 and 3
-$ seq 10 | sed -e 1d -e 3d
-$ seq 10 | sed -e '1d;3d'
-# replace sour char with dest char in order
-$ sed y/source-chars/dest-chars/
-# replaces all numbers in format of 999-99-9999 or 9 numbers in a row
-$ sed "y/123/abc/"
-$ sed -ri ':1
-         s/(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)/\1XXX-XX-XXXX\2/g
-         s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
-         t1' <ssn.txt>
-
-```
-### Mac / Darwin Specific Commands
-Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
-```bash
-$ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
-$ defaults write com.apple.finder AppleShowAllFiles YES && killall Finder
-```
-Hide everythign on the Desktop and stop files from being drug to it
-```bash
-$ defaults write com.apple.finder CreateDesktop -bool false && killall Finder
-```
-Set where screenshots from PNG to JPG and location they are saved to
-```bash
-$ defaults write com.apple.screencapture location ~/Desktop/Screenshots
-$ defaults write com.apple.screencapture type jpg && killall SystemUIServer
-```
-Always show the ~/Library folder 
-```bash
-$ chflags nohidden ~/Library/
-```
-Show the ~/.ssh folder as ~/ssh
-```bash
-$ ln -s ~/.ssh ~/ssh
-```
-Speed up TimeMachine Backups [link](https://www.defaults-write.com/speed-up-time-machine-backups/#more-1371)
-```bash
-# only persists until a reboot
-$ sudo sysctl debug.lowpri_throttle_enabled=0
-# slow back down without a reboot
-$ sudo sysctl debug.lowpri_throttle_enabled=1
-```
-Expand the Save Panel by default
-```bash
-$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-$ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-# use false to turn this off
-```
-Force text edit to default to plain text vs RTF format
-```bash
-$ defaults write com.apple.TextEdit RichText -int 0
-# Undo using:
-$ defaults delete com.apple.TextEdit RichText
-```
-Add a blank icon to the dock, move it around and add another...
-```bash
-$ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock
-```
-Set the max size to a time machine backup to 250GB (useful when multiple machines backup to the same drive)
-```bash
-$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -integer 256000
-# To reset to no limit
-$ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
-```
 
 ## More Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
