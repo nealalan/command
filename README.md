@@ -408,6 +408,7 @@ $ mvn package
 ## IMAGES & GRAPHICS
 ### ExifTool
 Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
+And an [exiftool cheatsheet by rjames86](https://gist.github.com/rjames86/33b9af12548adf091a26.js)
 ```bash
 # ExifTool - Read, Write and Edit Meta Info 
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
