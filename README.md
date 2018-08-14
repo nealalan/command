@@ -418,6 +418,13 @@ $ brew install exiftool
 $ exiftool photo.jpg
 $ exiftool photo.jpg | grep -E 'File Name|Create Date'
 ```
+Manually manipulate metadata fields
+```bash
+# Quick and dirty way for a while directory
+$ exiftool "-AllDates=1986:11:05 12:00:00" -if '$filetype eq "JPEG"' .
+# Field at a time
+$ exiftool '-datetimeoriginal=2015:01:18 12:00:00' .
+```
 A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
 ```bash
 # this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
