@@ -10,7 +10,7 @@ $ echo $(date)
 ```
 CAT - concatenate and print files
 ```bash
-#  -n number the output lines starting at 1
+#  -n number the output lines starting a
 #  -s squeeze out blank lines
 #  -t -v display non-printable characters
 $ cat cat.txt
@@ -66,7 +66,7 @@ $ sed -ri ':1
          t1' <ssn.txt>
 
 ```
-### Mac / Darwin Specific Commands
+## Mac / Darwin Specific Commands
 Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
 ```bash
 $ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
@@ -141,9 +141,44 @@ $ brew Brewfile
 # ... IN UBUNTU
 $ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
 
-# CHECK FOR UPDATES & UPGRADE
+# OTHER BREW COMMANDS
 $ brew update
 $ brew upgrade
+$ brew list
+```
+[GNU CoreUtils](https://www.gnu.org/software/coreutils/coreutils.html) - Basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
+[moreUtils](https://joeyh.name/code/moreutils/) - some other useful utilities like `sponge`
+[GNU fileUtils]() - some utils like `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+```bash
+$ brew install coreutils
+$ info coreutils
+# also...
+$ brew install moreutils
+$ info sponge
+$ brew install findutils
+$ info find
+```
+Others...
+```bash
+# Install GNU `sed`, overwriting the built-in `sed`.
+$ brew install gnu-sed --with-default-names
+```
+
+```bash
+# Install Bash 4.
+# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
+# running `chsh`.
+$ brew install bash
+$ sudo nano /etc/shells
+   # add `/usr/local/bin/bash` to `/etc/shells`
+
+$ brew install bash-completion2
+$ sudo nano ~/.bash_profile
+   # add the following to your ~/.bash_profile:
+  if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
+  fi
+$ bash --version
 ```
 
 ### Ubuntu Package Manager
@@ -373,7 +408,7 @@ particularly useful when searching for a file or searching for content in a file
 # -E : regex pattern search (or text search)
 $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 ```
-![](https://raw.githubusercontent.com/nealalan/command/master/grep-E.png)
+![](https://raw.githubusercontent.com/nealalan/command/master/images/grep-E.png)
 
 ```bash
 # LSOF -- list open files
