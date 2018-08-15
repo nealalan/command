@@ -52,6 +52,10 @@ $ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
 ```
 STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
 ```bash
+# Install GNU `sed`, overwriting the built-in `sed` on MacOS
+$ brew install gnu-sed --with-default-names
+```
+```bash
 $ sed -f <text-commands>
 # deleted 1 and 3
 $ seq 10 | sed -e 1d -e 3d
@@ -145,33 +149,33 @@ $ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
 $ brew update
 $ brew upgrade
 $ brew list
-```
-[GNU CoreUtils](https://www.gnu.org/software/coreutils/coreutils.html) - Basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
-[moreUtils](https://joeyh.name/code/moreutils/) - some other useful utilities like `sponge`
-[GNU fileUtils]() - some utils like `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-```bash
-$ brew install coreutils
-$ info coreutils
-# also...
-$ brew install moreutils
-$ info sponge
-$ brew install findutils
-$ info find
-```
-Others...
-```bash
-# Install GNU `sed`, overwriting the built-in `sed`.
-$ brew install gnu-sed --with-default-names
+
+# REMOVE OUTDATES VERSIONS from the cellar.
+brew cleanup
 ```
 
+### Additional Packages to Install
+
 ```bash
+# [GNU CoreUtils](https://www.gnu.org/software/coreutils/coreutils.html) - Basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
+$ brew install coreutils
+$ info coreutils
+
+# [moreUtils](https://joeyh.name/code/moreutils/) - some other useful utilities like `sponge`
+$ brew install moreutils
+$ info sponge
+
+# GNU fileUtils - some utils like `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+$ brew install findutils
+$ info find
+
 # Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
+# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 $ brew install bash
 $ sudo nano /etc/shells
    # add `/usr/local/bin/bash` to `/etc/shells`
 
+# Install bash-completion
 $ brew install bash-completion2
 $ sudo nano ~/.bash_profile
    # add the following to your ~/.bash_profile:
@@ -179,6 +183,56 @@ $ sudo nano ~/.bash_profile
     . /usr/local/share/bash-completion/bash_completion
   fi
 $ bash --version
+
+# Install `wget` with IRI support.
+$ brew install wget --with-iri
+
+# Install GnuPG to enable PGP-signing commits.
+$ brew install gnupg
+# I ran into some conflicts and had to perform a 
+$ brew reinstall gnupg
+$ gpg --version
+$ gpg -K
+
+# I hate VIM and will always just install nano or use atom if I have a GUI
+$ brew install vim --with-override-system-vi
+$ brew install nano
+
+# Updated from BSD grep 2.5.1 to GNU grep 3.1
+$ brew install grep --with-default-names
+
+# SCREEN - when I upgraded I went from v4.00.03 23-Oct-06 to v4.06.02 23-Oct-17
+# To use screen:
+#   you can see what's open using the `w` command
+#   see key-bindings ^a-?
+#   see all screens: ^a-*
+#   new screen: ^a-c
+#   jump between: ^a-" and scroll to select
+#   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
+$ brew install screen
+
+brew install openssh
+brew install homebrew/php/php56 --with-gmp
+```
+
+```bash
+# Install other useful binaries.
+brew install ack
+#brew install exiv2
+brew install git
+brew install git-lfs
+brew install imagemagick --with-webp
+brew install lua
+brew install lynx
+brew install p7zip
+brew install pigz
+brew install pv
+brew install rename
+brew install rlwrap
+brew install ssh-copy-id
+brew install tree
+brew install vbindiff
+brew install zopfli
 ```
 
 ### Ubuntu Package Manager
@@ -192,6 +246,35 @@ $ apt upgrade
 $ apt install <package>
 #  currently installed on the system from the sources configured via sources.list
 $ apt-cache search <package>
+```
+## CTF / DEVSEC / PENTEST Tools
+
+```bash
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install aircrack-ng
+brew install bfg
+brew install binutils
+brew install binwalk
+brew install cifer
+brew install dex2jar
+brew install dns2tcp
+brew install fcrackzip
+brew install foremost
+brew install hashpump
+brew install hydra
+brew install john
+brew install knock
+brew install netpbm
+brew install nmap
+brew install pngcheck
+brew install socat
+brew install sqlmap
+brew install tcpflow
+brew install tcpreplay
+brew install tcptrace
+brew install ucspi-tcp # `tcpserver` etc.
+brew install xpdf
+brew install xz
 ```
 
 ## FILES
@@ -222,6 +305,15 @@ I use this to sync music to backups and other computers
 ```bash
 # SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
+```
+
+## FONTS
+```bash
+# Install font tools.
+brew tap bramstein/webfonttools
+brew install sfnt2woff
+brew install sfnt2woff-zopfli
+brew install woff2
 ```
 
 ## GIT
