@@ -214,6 +214,14 @@ $ brew install screen
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
 ```
+SPEEDTEST
+[](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+```bash
+# DARWIN:
+$ brew install speedtest-cli
+# UBUNTU:
+$ apt install speedtest-cli
+```
 
 ```bash
 # Install other useful binaries.
@@ -244,8 +252,13 @@ brew install zopfli
 $ apt update
 $ apt upgrade
 $ apt install <package>
+$ apt list --installed
+
+# apt-cache - queries apt data 
 #  currently installed on the system from the sources configured via sources.list
 $ apt-cache search <package>
+$ apt-cache 
+
 ```
 ## CTF / DEVSEC / PENTEST Tools
 
