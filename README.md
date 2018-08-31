@@ -215,7 +215,8 @@ brew install openssh
 brew install homebrew/php/php56 --with-gmp
 ```
 SPEEDTEST
-[](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 ```bash
 # DARWIN:
 $ brew install speedtest-cli
@@ -588,6 +589,7 @@ Moving files
 $ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
 ```
 Incase you do want to update PNG metadata CreateDate you can do it like this
+
 ![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
 
 ## ENCRYPTION
