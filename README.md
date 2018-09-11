@@ -52,6 +52,10 @@ $ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
 
 # On my MacBookPro I wanted a folder called ~/Projects/ to point to my ~/Google Drive/DEV folder
 $ ln -s '/Users/neal/Google Drive/DEV/' Projects
+# And my ~/Pictures/ to point to ~/Google Drive/PHOTOS/
+$ ln -s '/Users/neal/Google Drive/PHOTOS/' Pictures
+# And my ~/Desktop/Screenshots/ to point to ~/Google Drive/PHOTOS/Screenshots/
+$ ln -s '/Users/neal/Google Drive/PHOTOS/Screenshots/' Screenshots
 ```
 STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
 ```bash
