@@ -49,6 +49,9 @@ LINK, LN, See also: [ln command](https://www.computerhope.com/unix/uln.htm)
 #  -s is a symbolic link
 $ sudo ln -s /home/ubuntu/sites-available sites-available
 $ sudo ln -s /var/www/nealalan.com/html/ nealalan.com
+
+# On my MacBookPro I wanted a folder called ~/Projects/ to point to my ~/Google Drive/DEV folder
+$ ln -s '/Users/neal/Google Drive/DEV/' Projects
 ```
 STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
 ```bash
