@@ -1,6 +1,6 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
-## COMMANDS 101 
+## COMMANDS 101
 Basic commands to navigate use the command line
 ECHO - write arguments to the standard output
 ```bash
@@ -92,7 +92,7 @@ Set where screenshots from PNG to JPG and location they are saved to
 $ defaults write com.apple.screencapture location ~/Desktop/Screenshots
 $ defaults write com.apple.screencapture type jpg && killall SystemUIServer
 ```
-Always show the ~/Library folder 
+Always show the ~/Library folder
 ```bash
 $ chflags nohidden ~/Library/
 ```
@@ -196,7 +196,7 @@ $ brew install wget --with-iri
 
 # Install GnuPG to enable PGP-signing commits.
 $ brew install gnupg
-# I ran into some conflicts and had to perform a 
+# I ran into some conflicts and had to perform a
 $ brew reinstall gnupg
 $ gpg --version
 $ gpg -K
@@ -215,14 +215,14 @@ $ brew install grep --with-default-names
 #   see all screens: ^a-*
 #   new screen: ^a-c
 #   jump between: ^a-" and scroll to select
-#   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
+#   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S
 $ brew install screen
 
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
 ```
 SPEEDTEST
-
+So much easier and less overhead of the browser and website when you can just use their API from the command line!
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 ```bash
 # DARWIN:
@@ -256,16 +256,16 @@ brew install zopfli
 # APT / APT-GET -provides a high-level command line interface for the package management system
 #  -y default yes
 #  update = d/l package info from all configured sources
-#  upgrade = install avai upgrades of all packages 
+#  upgrade = install avai upgrades of all packages
 $ apt update
 $ apt upgrade
 $ apt install <package>
 $ apt list --installed
 
-# apt-cache - queries apt data 
+# apt-cache - queries apt data
 #  currently installed on the system from the sources configured via sources.list
 $ apt-cache search <package>
-$ apt-cache 
+$ apt-cache
 
 ```
 ## CTF / DEVSEC / PENTEST Tools
@@ -301,15 +301,15 @@ brew install xz
 ## FILES
 ```bash
 # DIRECTORY/FILE COLLAPSE
-# find all files in this directory and its sub-directories 
-# and execute mv with target directory . for each file found 
+# find all files in this directory and its sub-directories
+# and execute mv with target directory . for each file found
 # to move them to current directory.
 # Note: I tried adding mv --backup=numbered but this doesn't work
 #  so I added -n to keep from overwriting files with the same name
 $ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
 ```bash
-# ARCHIVE/ZIP 
+# ARCHIVE/ZIP
 # -r recursively through dirs
 # -dc a nice output
 # -9 max compression (no reason not to if storing on the cloud?!)
@@ -375,15 +375,15 @@ $ ssh-keygen -t rsa -C "neal@email.com"
 $ ssh -T git@github.com
 
 # SET AN HTTPS CLONE TO AN SSH PUSH
-# so i pulled down something before I setup ssh and made a bunch of changes 
+# so i pulled down something before I setup ssh and made a bunch of changes
 # i wanted to push back. so I used this command to changed it to SSH push
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
 ```
 
 ### hub setup
-hub is a github utility that lets you *create a repo remotely* 
+hub is a github utility that lets you *create a repo remotely*
 - [https://hub.github.com/](https://hub.github.com/)
-- to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
+- to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79)
 
 ## MONITORING
 ```bash
@@ -450,7 +450,7 @@ $ dirb 10.10.50.2
 ```
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
-### nc / netcat 
+### nc / netcat
 TCP & UDP connections and listener
 ```bash
 # NC - PULL A WEBPAGE
@@ -478,7 +478,7 @@ $ nc -v 127.0.0.1 43 < filename.send
 
 ### nethogs
 ```bash
-# NETHOGS -- monitor process socket connections 
+# NETHOGS -- monitor process socket connections
 ```
 
 ### nmap
@@ -498,7 +498,7 @@ $ nmap localhost
 $ scutil --proxy
 $ scutil --dns
 $ scutil --get ComputerName
-``` 
+```
 ## METASPLOIT
 ```bash
 # metaspolit console
@@ -544,7 +544,7 @@ $ chmod +x script.sh
 ```
 ## DEV TOOLS, CODE & SCRIPTING
 ### maven
-apache maven will build your jar files from java source packages. 
+apache maven will build your jar files from java source packages.
 ```bach
 # from your project-dir/pom.xml folder
 $ mvn package
@@ -558,7 +558,7 @@ $ mvn package
 Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
 And an [exiftool cheatsheet by rjames86](https://gist.github.com/rjames86/33b9af12548adf091a26)
 ```bash
-# ExifTool - Read, Write and Edit Meta Info 
+# ExifTool - Read, Write and Edit Meta Info
 # Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
 # [Installing](https://www.sno.phy.queensu.ca/~phil/exiftool/install.html) exiftool:
 $ brew install exiftool
@@ -576,7 +576,7 @@ $ exiftool '-datetimeoriginal=2015:01:18 12:00:00' .
 A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
 ```bash
 # this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
-#  Note: filtering out PNG and MP4 files. 
+#  Note: filtering out PNG and MP4 files.
 $ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
 $ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
 # this will rename Ex:
@@ -615,7 +615,7 @@ Linux nealalan 4.4.0-1060-aws #69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64
 $ chgrp -hR admin /u
 # Change the current folder, all subfolders and files to the group "nealalan.com"
 $ chgrp -hR nealalan.com .
-              
+
 ```
 ### processes
 ```bash
