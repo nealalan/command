@@ -380,10 +380,25 @@ $ ssh -T git@github.com
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
 ```
 
-### hub setup
+### hub
 hub is a github utility that lets you *create a repo remotely* 
 - [https://hub.github.com/](https://hub.github.com/)
 - to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
+```bash
+These GitHub commands are provided by hub:
+
+   browse         Open a GitHub page in the default browser
+   ci-status      Show the status of GitHub checks for a commit
+   compare        Open a compare page on GitHub
+   create         Create this repository on GitHub and add GitHub as origin
+   delete         Delete a repository on GitHub
+   fork           Make a fork of a remote repository on GitHub and add as remote
+   issue          List or create GitHub issues
+   pr             List or checkout GitHub pull requests
+   pull-request   Open a pull request on GitHub
+   release        List or create GitHub releases
+   sync           Fetch git objects from upstream and update branches
+```
 
 ## MONITORING
 ```bash
