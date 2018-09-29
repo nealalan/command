@@ -230,6 +230,12 @@ $ brew install speedtest-cli
 # UBUNTU:
 $ apt install speedtest-cli
 ```
+WEBTORRENT
+```bash
+# DARWIN:
+$ brew install webtorrent-cli
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2013.35.28.jpg?raw=true)
 
 ```bash
 # Install other useful binaries.
