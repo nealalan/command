@@ -222,14 +222,14 @@ brew install openssh
 brew install homebrew/php/php56 --with-gmp
 ```
 SPEEDTEST
-
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 ```bash
 # DARWIN:
 $ brew install speedtest-cli
 # UBUNTU:
 $ apt install speedtest-cli
 ```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+
 WEBTORRENT
 ```bash
 # DARWIN:
