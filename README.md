@@ -10,7 +10,7 @@ $ echo $(date)
 ```
 CAT - concatenate and print files
 ```bash
-#  -n number the output lines starting a
+#  -n number the output lines starting a            
 #  -s squeeze out blank lines
 #  -t -v display non-printable characters
 $ cat cat.txt
@@ -162,7 +162,30 @@ brew cleanup
 ```
 
 ### Additional Packages to Install
+SPEEDTEST
+```bash
+# DARWIN:
+$ brew install speedtest-cli
+# UBUNTU:
+$ apt install speedtest-cli
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 
+WEBTORRENT
+```bash
+# DARWIN:
+$ brew install webtorrent-cli
+# UBUNTU:
+$ apt install webtorrent-cli
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2013.35.28.jpg?raw=true)
+```bash
+# USE: 
+$ webtorrent download https://images.offensive-security.com/kali-linux-2018.3a-amd64.iso.torrent -o ~/Downloads/
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2013.45.24.jpg?raw=true)
+
+COREUTILS, MOREUTILS, FILEUTILS
 ```bash
 # [GNU CoreUtils](https://www.gnu.org/software/coreutils/coreutils.html) - Basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
 $ brew install coreutils
@@ -191,17 +214,10 @@ $ sudo nano ~/.bash_profile
   fi
 $ bash --version
 
-# Install `wget` with IRI support.
+# WEB GET - Install `wget` with IRI support.
 $ brew install wget --with-iri
 
-# Install GnuPG to enable PGP-signing commits.
-$ brew install gnupg
-# I ran into some conflicts and had to perform a 
-$ brew reinstall gnupg
-$ gpg --version
-$ gpg -K
-
-# I hate VIM and will always just install nano or use atom if I have a GUI
+# EDITORS - I hate VIM and will always just install nano or use atom if I have a GUI
 $ brew install vim --with-override-system-vi
 $ brew install nano
 
@@ -218,29 +234,23 @@ $ brew install grep --with-default-names
 #   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
 $ brew install screen
 
+```
+
+ENCRYPTION
+```bash
+# Install GnuPG to enable PGP-signing commits.
+$ brew install gnupg
+# I ran into some conflicts and had to perform a 
+$ brew reinstall gnupg
+$ gpg --version
+$ gpg -K
+```
+
+
+```bash
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
-```
-SPEEDTEST
-```bash
-# DARWIN:
-$ brew install speedtest-cli
-# UBUNTU:
-$ apt install speedtest-cli
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 
-WEBTORRENT
-```bash
-# DARWIN:
-$ brew install webtorrent-cli
-
-# USE: 
-$ webtorrent download https://images.offensive-security.com/kali-linux-2018.3a-amd64.iso.torrent -o ~/Downloads/
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2013.35.28.jpg?raw=true)
-
-```bash
 # Install other useful binaries.
 brew install ack
 #brew install exiv2
