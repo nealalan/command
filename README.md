@@ -327,6 +327,11 @@ I use this to sync music to backups and other computers
 # SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 ```
+## VIDEO
+```bash
+# Install MPV https://mpv.io/installation/
+$ brew install mpv
+```
 
 ## FONTS
 ```bash
