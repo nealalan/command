@@ -234,6 +234,9 @@ WEBTORRENT
 ```bash
 # DARWIN:
 $ brew install webtorrent-cli
+
+# USE: 
+$ webtorrent download https://images.offensive-security.com/kali-linux-2018.3a-amd64.iso.torrent -o ~/Downloads/
 ```
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2013.35.28.jpg?raw=true)
 
