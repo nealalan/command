@@ -235,6 +235,15 @@ $ brew install grep --with-default-names
 $ brew install screen
 
 ```
+DOWNLOADING
+To download files you can use WGET
+```bash
+# INSTALL:
+$ brew install wget
+# USE:
+$ wget -P ~/Downloads/ https://download.virtualbox.org/virtualbox/5.2.18/VirtualBox-5.2.18-124319-OSX.dmg
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2014.48.24.jpg?raw=true)
 
 ENCRYPTION
 ```bash
