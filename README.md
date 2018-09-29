@@ -214,9 +214,6 @@ $ sudo nano ~/.bash_profile
   fi
 $ bash --version
 
-# WEB GET - Install `wget` with IRI support.
-$ brew install wget --with-iri
-
 # EDITORS - I hate VIM and will always just install nano or use atom if I have a GUI
 $ brew install vim --with-override-system-vi
 $ brew install nano
@@ -225,21 +222,21 @@ $ brew install nano
 $ brew install grep --with-default-names
 
 # SCREEN - when I upgraded I went from v4.00.03 23-Oct-06 to v4.06.02 23-Oct-17
-# To use screen:
+# INSTALL:
+$ brew install screen
+# USE:
 #   you can see what's open using the `w` command
 #   see key-bindings ^a-?
 #   see all screens: ^a-*
 #   new screen: ^a-c
 #   jump between: ^a-" and scroll to select
 #   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
-$ brew install screen
-
 ```
+
 DOWNLOADING
-To download files you can use WGET
 ```bash
 # INSTALL:
-$ brew install wget
+$ brew install wget --with-iri
 # USE:
 $ wget -P ~/Downloads/ https://download.virtualbox.org/virtualbox/5.2.18/VirtualBox-5.2.18-124319-OSX.dmg
 ```
