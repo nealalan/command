@@ -258,6 +258,14 @@ PYTHON PACKAGE MANAGER
 $ sudo easy_install pip
 ```
 
+AWS & [LOCALSTACK](https://github.com/localstack/localstack)
+```bash
+# INSTALL:
+$ brew install aws-cli
+$ pip install localstack
+# USE:
+```
+
 ```bash
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
@@ -657,7 +665,7 @@ Incase you do want to update PNG metadata CreateDate you can do it like this
 ## SYSTEM ADMINISTRATION
 ```bash
 ubuntu@nealalan:~$ uname -a
-Linux nealalan 4.4.0-1060-aws #69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
 ```bash
 # CHGRP - change group ownership
