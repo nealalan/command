@@ -252,6 +252,11 @@ $ gpg --version
 $ gpg -K
 ```
 
+PYTHON PACKAGE MANAGER
+```bash
+# INSTALL:
+$ sudo easy_install pip
+```
 
 ```bash
 brew install openssh
