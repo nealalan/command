@@ -77,7 +77,7 @@ $ sed -ri ':1
          t1' <ssn.txt>
 
 ```
-## Mac / Darwin Specific Commands
+## MacOS / Darwin Specific Commands
 Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
 ```bash
 $ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
@@ -129,39 +129,70 @@ $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -intege
 # To reset to no limit
 $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
 ```
-
-## UPDATES, UPGRADES & PACKAGE MANAGERS
+## PACKAGE MANAGERS, TOOLS & SOFTWARE
 ### Mac Package Managers (Darwin)
+APPLE XCODE COMMAND LINE DEV TOOLS
 ```bash
-# INSTALL APPLE XCODE COMMAND LINE DEV TOOLS
+# INSTALL: 
 $ xcode-select --install
-# INSTALL HOMEBREW / BREW
+```
+BREW (HOMEBREW) PACKAGE MANAGER
+```bash
+# INSTALL:
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# CHECK STATUS OF BREW
+# CHECK STATUS:
 $ brew doctor
-# INSTALL IFTOP
-$ brew install iftop
-
-# SEE WHAT'S INSTALLED
+```
+OTHER BREW COMMANDS
+```bash
+# SEE WHAT'S INSTALLED:
 $ brew list && brew cask list
 $ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
 $ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
+
 # CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
 $ brew bundle dump
 $ brew Brewfile
+
 # ... IN UBUNTU
 $ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
 
-# OTHER BREW COMMANDS
+# REMOVE OUTDATES VERSIONS (from the cellar):
+brew cleanup
+
+# CHECK FOR UPDATES:
 $ brew update
 $ brew upgrade
-$ brew list
+```
+APT PACKAGE MANAGER - native in Ubuntu
+```bash
+# APT / APT-GET -provides a high-level command line interface for the package management system
+#  -y default yes
+#  update = d/l package info from all configured sources
+#  upgrade = install avai upgrades of all packages 
+# USE:
+$ apt update
+$ apt upgrade
+$ apt install <package>
+$ apt list --installed
+# apt-cache - queries apt data 
+#  currently installed on the system from the sources configured via sources.list
+$ apt-cache search <package>
+$ apt-cache 
 
-# REMOVE OUTDATES VERSIONS from the cellar.
-brew cleanup
+# NOTE: You can install this on a Mac, but I choose not to at this point.
 ```
 
-### Additional Packages to Install
+PYTHON PACKAGE MANAGER
+```bash
+# INSTALL:
+$ sudo easy_install pip
+```
+NETWORK MONITORING
+```bash
+# INSTALL:
+$ brew install iftop
+```
 SPEEDTEST
 ```bash
 # DARWIN:
@@ -214,16 +245,20 @@ $ sudo nano ~/.bash_profile
   fi
 $ bash --version
 
-# EDITORS - I hate VIM and will always just install nano or use atom if I have a GUI
-$ brew install vim --with-override-system-vi
-$ brew install nano
-
 # Updated from BSD grep 2.5.1 to GNU grep 3.1
 $ brew install grep --with-default-names
-
-# SCREEN - when I upgraded I went from v4.00.03 23-Oct-06 to v4.06.02 23-Oct-17
+```
+EDITORS
+```bash
+# VI - I hate 'VIM' and will always just install NANO (command line) or ATOM (GUI)
+$ brew install vim --with-override-system-vi
+$ brew install nano
+```
+SCREEN - MULTITASKING TOOL
+```bash
 # INSTALL:
 $ brew install screen
+# Note: when I upgraded I went from v4.00.03 23-Oct-06 to v4.06.02 23-Oct-17
 # USE:
 #   you can see what's open using the `w` command
 #   see key-bindings ^a-?
@@ -232,8 +267,7 @@ $ brew install screen
 #   jump between: ^a-" and scroll to select
 #   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
 ```
-
-DOWNLOADING
+DOWNLOADING UTIL
 ```bash
 # INSTALL:
 $ brew install wget --with-iri
@@ -252,12 +286,6 @@ $ gpg --version
 $ gpg -K
 ```
 
-PYTHON PACKAGE MANAGER
-```bash
-# INSTALL:
-$ sudo easy_install pip
-```
-
 AWS & [LOCALSTACK](https://github.com/localstack/localstack)
 ```bash
 # INSTALL:
@@ -266,6 +294,8 @@ $ pip install localstack
 # USE:
 ```
 
+
+.....
 ```bash
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
@@ -289,23 +319,7 @@ brew install vbindiff
 brew install zopfli
 ```
 
-### Ubuntu Package Manager
-```bash
-# APT / APT-GET -provides a high-level command line interface for the package management system
-#  -y default yes
-#  update = d/l package info from all configured sources
-#  upgrade = install avai upgrades of all packages 
-$ apt update
-$ apt upgrade
-$ apt install <package>
-$ apt list --installed
 
-# apt-cache - queries apt data 
-#  currently installed on the system from the sources configured via sources.list
-$ apt-cache search <package>
-$ apt-cache 
-
-```
 ## CTF / DEVSEC / PENTEST Tools
 
 ```bash
