@@ -380,21 +380,28 @@ I use this to sync music to backups and other computers
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 ```
 ## AUDIO / VIDEO
-MP3 Audio and Video ripper
+MP3 Audio and MP4 Video downloader
 ```bash
 # INSTALL:
 $ brew install youtube-dl
 # USE:
-# video file
+# to download video file
 $ youtube-dl <https://link>
 ```
 <img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true" width=600>
 
 ```bash
-# audio file
+# to download audio file as mp3 and 320K bitrate
 $ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
 ```
 <img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true" width=600>
+
+Audio / Video player install
+```bash
+# Install MPV https://mpv.io/installation/
+$ brew install mpv
+```
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.54.31.jpg?raw=true" width=600>
 
 Audio Player
 ```bash
@@ -405,8 +412,8 @@ $ mpv <file.mp3>
 
 Video Player
 ```bash
-# Install MPV https://mpv.io/installation/
-$ brew install mpv
+# interact with the video player that is spawned from the command line
+$ mpv <file.mp4>
 ```
 <img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true" width=600>
 <img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true" width=600>
