@@ -388,17 +388,28 @@ $ brew install youtube-dl
 # video file
 $ youtube-dl <https://link>
 ```
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true" width=600>
 
 ```bash
 # audio file
 $ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
 ```
-mpv
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true" width=600>
+
+Audio Player
+```bash
+# from the command line you can use the arrow keys to control the playback of the audio
+$ mpv <file.mp3>
+```
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.55.27.jpg?raw=true" width=600>
+
 Video Player
 ```bash
 # Install MPV https://mpv.io/installation/
 $ brew install mpv
 ```
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true" width=600>
+<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true" width=600>
 
 ## FONTS
 ```bash
