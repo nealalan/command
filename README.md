@@ -379,7 +379,22 @@ I use this to sync music to backups and other computers
 # SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 ```
-## VIDEO
+## AUDIO / VIDEO
+MP3 Audio and Video ripper
+```bash
+# INSTALL:
+$ brew install youtube-dl
+# USE:
+# video file
+$ youtube-dl <https://link>
+```
+
+```bash
+# audio file
+$ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
+```
+mpv
+Video Player
 ```bash
 # Install MPV https://mpv.io/installation/
 $ brew install mpv
