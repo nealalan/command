@@ -294,6 +294,14 @@ $ pip install localstack
 # USE:
 ```
 
+Text Based Web Browser - This is what I started using in 1994 on Freenets when I started writing HTML
+```bash
+# INSTALL:
+$ brew install lynx
+# USE:
+$ lynx nealalan.github.io
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-19%20at%2012.26.04.jpg?raw=true)
 
 .....
 ```bash
@@ -307,7 +315,7 @@ brew install git
 brew install git-lfs
 brew install imagemagick --with-webp
 brew install lua
-brew install lynx
+
 brew install p7zip
 brew install pigz
 brew install pv
