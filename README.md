@@ -396,35 +396,35 @@ $ brew install youtube-dl
 # to download video file
 $ youtube-dl <https://link>
 ```
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true" width=600>
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true)
 
 ```bash
 # to download audio file as mp3 and 320K bitrate
 $ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
 ```
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true" width=600>
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true)
 
 Audio / Video player install
 ```bash
 # Install MPV https://mpv.io/installation/
 $ brew install mpv
 ```
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.54.31.jpg?raw=true" width=600>
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.54.31.jpg?raw=true)
 
 Audio Player
 ```bash
 # from the command line you can use the arrow keys to control the playback of the audio
 $ mpv <file.mp3>
 ```
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.55.27.jpg?raw=true" width=600>
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.55.27.jpg?raw=true)
 
 Video Player
 ```bash
 # interact with the video player that is spawned from the command line
 $ mpv <file.mp4>
 ```
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true" width=600>
-<img src="https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true" width=600>
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
 
 ## FONTS
 ```bash
