@@ -521,6 +521,108 @@ Incase you do want to update PNG metadata CreateDate you can do it like this
 
 ![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
 
+## MONITORING
+
+```bash
+# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
+# service <servicename> status
+$ service --status-all
+```
+SYSTEM IO MONITORING LOOP
+```bash
+# writes out the activity  on the system every 3 seconts
+$ while true ; do iostat -w 3 ; done
+```
+TOP -- display and update sorted information about processes
+```bash
+$ top -o cpu -O +rsize -s 3
+```
+IFTOP -- Interface top in a refreshing screen with cum view
+```bash
+$ sudo iftop -i en0
+```
+SYSTEMCTL & JOURNALCTL
+```bash
+$ systemctl start
+$ systemctl stop
+$ systemctl status <servicename>
+# journalctl - Log file for the system to help debug when a server doesn’t start
+$ journalctl -xe
+```
+- note-to-self: need to check out mytop, mtop, innotop, mysqladmin
+
+## NETWORKING
+NETWORK MONITORING
+```bash
+# INSTALL:
+$ brew install iftop
+```
+SPEEDTEST
+```bash
+# DARWIN:
+$ brew install speedtest-cli
+# UBUNTU:
+$ apt install speedtest-cli
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+
+IFCONFIG - network interface configuration & routing for the computer ports
+```bash
+$ ifconfig en0
+$ ifconfig | grep 'inet'
+```
+
+- [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
+
+### nc / netcat 
+TCP & UDP connections and listener
+```bash
+# NC - PULL A WEBPAGE
+$ nc localhost 80
+# NC - PORT SCANNING
+$ nc -v -w 1 server2.example.com -z 1-1000
+# NC - LISTEN FOR A CONNECTION ON PORT 42
+#  -v add verbosity
+$ nc -v -l 42
+# CONNECT TO PORT 42 VIA THE LOOPBACK IP FROM ANOTHER TERM
+$ nc -v 127.0.0.1 42
+# either side can type and it will echo back
+# terminate the connection with ^D (EOF)
+```
+```bash
+# NC - SEND FILES
+$ nc -lp 1234 > stuff_to_send.txt
+$ nc -w 1 server 1234 < stuff.txt
+
+# LISTEN INTO A FILE
+$ nc -v -l 43 > filename.receive
+# SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
+$ nc -v 127.0.0.1 43 < filename.send
+```
+
+### nethogs
+```bash
+# NETHOGS -- monitor process socket connections 
+```
+
+### nmap
+nmap can be super noisy and really irritate anyone you run it against recommend you only run it again computers within your internal network or scanme.nmap.org
+```bash
+# FIND OUT WHAT'S THERE BRUTELY, RECURSIVELY
+# this will give you a nice idea of how to hit a server that's poorly configured and open
+# -A : enable OS detection and version detection, script scanning and tracert
+# -T4 : faster execution (about 1 min for me usually)
+# -r : scan ports consecutively
+# -p : port range
+$ nmap -A -T4 -r -p [1-9999] <address>
+#
+$ nmap -sC
+
+$ nmap localhost
+$ scutil --proxy
+$ scutil --dns
+$ scutil --get ComputerName
+``` 
 ## PACKAGE MANAGERS
 ### BREW (HOMEBREW) PACKAGE MANAGER
 ```bash
@@ -702,109 +804,6 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 ```
-
-## MONITORING
-
-```bash
-# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
-# service <servicename> status
-$ service --status-all
-```
-SYSTEM IO MONITORING LOOP
-```bash
-# writes out the activity  on the system every 3 seconts
-$ while true ; do iostat -w 3 ; done
-```
-TOP -- display and update sorted information about processes
-```bash
-$ top -o cpu -O +rsize -s 3
-```
-IFTOP -- Interface top in a refreshing screen with cum view
-```bash
-$ sudo iftop -i en0
-```
-SYSTEMCTL & JOURNALCTL
-```bash
-$ systemctl start
-$ systemctl stop
-$ systemctl status <servicename>
-# journalctl - Log file for the system to help debug when a server doesn’t start
-$ journalctl -xe
-```
-- note-to-self: need to check out mytop, mtop, innotop, mysqladmin
-
-## NETWORKING
-NETWORK MONITORING
-```bash
-# INSTALL:
-$ brew install iftop
-```
-SPEEDTEST
-```bash
-# DARWIN:
-$ brew install speedtest-cli
-# UBUNTU:
-$ apt install speedtest-cli
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
-
-IFCONFIG - network interface configuration & routing for the computer ports
-```bash
-$ ifconfig en0
-$ ifconfig | grep 'inet'
-```
-
-- [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
-
-### nc / netcat 
-TCP & UDP connections and listener
-```bash
-# NC - PULL A WEBPAGE
-$ nc localhost 80
-# NC - PORT SCANNING
-$ nc -v -w 1 server2.example.com -z 1-1000
-# NC - LISTEN FOR A CONNECTION ON PORT 42
-#  -v add verbosity
-$ nc -v -l 42
-# CONNECT TO PORT 42 VIA THE LOOPBACK IP FROM ANOTHER TERM
-$ nc -v 127.0.0.1 42
-# either side can type and it will echo back
-# terminate the connection with ^D (EOF)
-```
-```bash
-# NC - SEND FILES
-$ nc -lp 1234 > stuff_to_send.txt
-$ nc -w 1 server 1234 < stuff.txt
-
-# LISTEN INTO A FILE
-$ nc -v -l 43 > filename.receive
-# SEND A FILE TO PORT 43 VIA THE LOOPBACK IP FROM ANOTHER TERM
-$ nc -v 127.0.0.1 43 < filename.send
-```
-
-### nethogs
-```bash
-# NETHOGS -- monitor process socket connections 
-```
-
-### nmap
-nmap can be super noisy and really irritate anyone you run it against recommend you only run it again computers within your internal network or scanme.nmap.org
-```bash
-# FIND OUT WHAT'S THERE BRUTELY, RECURSIVELY
-# this will give you a nice idea of how to hit a server that's poorly configured and open
-# -A : enable OS detection and version detection, script scanning and tracert
-# -T4 : faster execution (about 1 min for me usually)
-# -r : scan ports consecutively
-# -p : port range
-$ nmap -A -T4 -r -p [1-9999] <address>
-#
-$ nmap -sC
-
-$ nmap localhost
-$ scutil --proxy
-$ scutil --dns
-$ scutil --get ComputerName
-``` 
 
 ## WORDPRESS
 - wordpress-online-vulnerabilitty-scanners
