@@ -162,7 +162,7 @@ $ mpv <file.mp4>
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
 
-### AWS
+## AWS
 AWS & [LOCALSTACK](https://github.com/localstack/localstack)
 ```bash
 # INSTALL:
