@@ -748,6 +748,8 @@ $ brew install vim --with-override-system-vi
 $ brew install nano
 ```
 SCREEN - MULTITASKING TOOL
+
+A tool that allows you to have multiple screens within a single session using "[regions](https://www.gnu.org/software/screen/manual/screen.html#Regions)"
 ```bash
 # INSTALL:
 $ brew install screen
@@ -758,7 +760,7 @@ $ brew install screen
 #   see all screens: ^a-*
 #   new screen: ^a-c
 #   jump between: ^a-" and scroll to select
-#   split screen using [regions](https://www.gnu.org/software/screen/manual/screen.html#Regions): ^a-S 
+#   spilt screen: ^a-S 
 ```
 DOWNLOADING UTIL
 ```bash
