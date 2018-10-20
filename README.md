@@ -1,5 +1,6 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
+
 ## COMMANDS 101 
 Basic commands to navigate use the command line
 ECHO - write arguments to the standard output
@@ -75,9 +76,13 @@ $ sed -ri ':1
          s/(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)/\1XXX-XX-XXXX\2/g
          s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
          t1' <ssn.txt>
-
 ```
-## MacOS / Darwin Specific Commands
+## CONFIGURATION - MacOS / Darwin Specific
+APPLE XCODE COMMAND LINE DEVELOPMENT
+```bash
+# INSTALL: 
+$ xcode-select --install
+```
 Show all files in Mac OS Finder and on desktop (Note this will show annoying OS files)
 ```bash
 $ defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
@@ -129,78 +134,97 @@ $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -intege
 # To reset to no limit
 $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
 ```
-## PACKAGE MANAGERS, TOOLS & SOFTWARE
-### Mac Package Managers (Darwin)
-APPLE XCODE COMMAND LINE DEV TOOLS
+
+## CTF / DEVSEC / PENTEST
 ```bash
-# INSTALL: 
-$ xcode-select --install
-```
-BREW (HOMEBREW) PACKAGE MANAGER
-```bash
-# INSTALL:
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# CHECK STATUS:
-$ brew doctor
-```
-OTHER BREW COMMANDS
-```bash
-# SEE WHAT'S INSTALLED:
-$ brew list && brew cask list
-$ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
-$ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
-
-# CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
-$ brew bundle dump
-$ brew Brewfile
-
-# ... IN UBUNTU
-$ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
-
-# REMOVE OUTDATES VERSIONS (from the cellar):
-brew cleanup
-
-# CHECK FOR UPDATES:
-$ brew update
-$ brew upgrade
-```
-APT PACKAGE MANAGER - native in Ubuntu
-```bash
-# APT / APT-GET -provides a high-level command line interface for the package management system
-#  -y default yes
-#  update = d/l package info from all configured sources
-#  upgrade = install avai upgrades of all packages 
-# USE:
-$ apt update
-$ apt upgrade
-$ apt install <package>
-$ apt list --installed
-# apt-cache - queries apt data 
-#  currently installed on the system from the sources configured via sources.list
-$ apt-cache search <package>
-$ apt-cache 
-
-# NOTE: You can install this on a Mac, but I choose not to at this point.
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install aircrack-ng
+brew install bfg
+brew install binutils
+brew install binwalk
+brew install cifer
+brew install dex2jar
+brew install dns2tcp
+brew install fcrackzip
+brew install foremost
+brew install hashpump
+brew install hydra
+brew install john
+brew install knock
+brew install netpbm
+brew install nmap
+brew install pngcheck
+brew install socat
+brew install sqlmap
+brew install tcpflow
+brew install tcpreplay
+brew install tcptrace
+brew install ucspi-tcp # `tcpserver` etc.
+brew install xpdf
+brew install xz
 ```
 
-PYTHON PACKAGE MANAGER
+## DEV TOOLS, CODE & SCRIPTING
+- [Bash Scripting Cheatsheet](https://devhints.io/bash)
+- [Wikibooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting)
+
+### SCRIPTING
+```bash
+# Don't forget:
+$ chmod +x script.sh
+```
+
+### maven
+apache maven will build your jar files from java source packages. 
+```bach
+# from your project-dir/pom.xml folder
+$ mvn package
+# you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
+```
+
+### PYTHON
+PACKAGE MANAGER FOR PYTHON
 ```bash
 # INSTALL:
 $ sudo easy_install pip
 ```
-NETWORK MONITORING
+
+### RUBY & JEKYLL
+[Jekyll Doc Site](https://jekyllrb.com/)
+
+### SQL
+- sqlmap
+
+## FILES
 ```bash
-# INSTALL:
-$ brew install iftop
+# DIRECTORY/FILE COLLAPSE
+# find all files in this directory and its sub-directories 
+# and execute mv with target directory . for each file found 
+# to move them to current directory.
+# Note: I tried adding mv --backup=numbered but this doesn't work
+#  so I added -n to keep from overwriting files with the same name
+$ find . -mindepth 2 -type f -print -exec mv -n {} . \;
 ```
-SPEEDTEST
 ```bash
-# DARWIN:
-$ brew install speedtest-cli
-# UBUNTU:
-$ apt install speedtest-cli
+# ARCHIVE/ZIP 
+# -r recursively through dirs
+# -dc a nice output
+# -9 max compression (no reason not to if storing on the cloud?!)
+# can use REGEX with it also :D
+$ zip -r -dc -9 archive_name *
 ```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+I use this to sync photos from the source to my iMac
+```bash
+# SYNC FILES ACROSS COMPUTERS
+# --dry-run is obviously removed for the real xfer
+$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes ~/Pictures/ neal@192.168.1.42:/Users/Neal/Pictures/All_Photos > ~/Desktop/pic_bkp_$(date +"%Y%m%d_%H%M%S").txt
+```
+I use this to sync music to backups and other computers
+```bash
+# SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
+$ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
+```
+## TOOLS & SOFTWARE
 
 WEBTORRENT
 ```bash
@@ -328,65 +352,7 @@ brew install zopfli
 ```
 
 
-## CTF / DEVSEC / PENTEST Tools
 
-```bash
-# Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install aircrack-ng
-brew install bfg
-brew install binutils
-brew install binwalk
-brew install cifer
-brew install dex2jar
-brew install dns2tcp
-brew install fcrackzip
-brew install foremost
-brew install hashpump
-brew install hydra
-brew install john
-brew install knock
-brew install netpbm
-brew install nmap
-brew install pngcheck
-brew install socat
-brew install sqlmap
-brew install tcpflow
-brew install tcpreplay
-brew install tcptrace
-brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
-brew install xz
-```
-
-## FILES
-```bash
-# DIRECTORY/FILE COLLAPSE
-# find all files in this directory and its sub-directories 
-# and execute mv with target directory . for each file found 
-# to move them to current directory.
-# Note: I tried adding mv --backup=numbered but this doesn't work
-#  so I added -n to keep from overwriting files with the same name
-$ find . -mindepth 2 -type f -print -exec mv -n {} . \;
-```
-```bash
-# ARCHIVE/ZIP 
-# -r recursively through dirs
-# -dc a nice output
-# -9 max compression (no reason not to if storing on the cloud?!)
-# can use REGEX with it also :D
-$ zip -r -dc -9 archive_name *
-```
-I use this to sync photos from the source to my iMac
-```bash
-# SYNC FILES ACROSS COMPUTERS
-# --dry-run is obviously removed for the real xfer
-$ rsync --dry-run --recursive --compress --progress --delete --itemize-changes ~/Pictures/ neal@192.168.1.42:/Users/Neal/Pictures/All_Photos > ~/Desktop/pic_bkp_$(date +"%Y%m%d_%H%M%S").txt
-```
-I use this to sync music to backups and other computers
-```bash
-# SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
-$ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
-```
 ## AUDIO / VIDEO
 MP3 Audio and MP4 Video downloader
 ```bash
@@ -513,6 +479,20 @@ $ sudo iftop -i en0
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## NETWORKING
+NETWORK MONITORING
+```bash
+# INSTALL:
+$ brew install iftop
+```
+SPEEDTEST
+```bash
+# DARWIN:
+$ brew install speedtest-cli
+# UBUNTU:
+$ apt install speedtest-cli
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
+
 IFCONFIG - use to find intranet IP address
 ```bash
 $ icfongif | grep 'inet'
@@ -621,8 +601,55 @@ $ show options
 # LOAD PARMS
 $ set RHOST 10.10.50.2
 $ set TARGETURI /cgi-bin/test-cgi
-
 ```
+## PACKAGE MANAGERS
+BREW (HOMEBREW) PACKAGE MANAGER
+```bash
+# INSTALL:
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# CHECK STATUS:
+$ brew doctor
+```
+OTHER BREW COMMANDS
+```bash
+# SEE WHAT'S INSTALLED:
+$ brew list && brew cask list
+$ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
+$ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
+
+# CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
+$ brew bundle dump
+$ brew Brewfile
+
+# ... IN UBUNTU
+$ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
+
+# REMOVE OUTDATES VERSIONS (from the cellar):
+brew cleanup
+
+# CHECK FOR UPDATES:
+$ brew update
+$ brew upgrade
+```
+APT PACKAGE MANAGER - native in Ubuntu
+```bash
+# APT / APT-GET -provides a high-level command line interface for the package management system
+#  -y default yes
+#  update = d/l package info from all configured sources
+#  upgrade = install avai upgrades of all packages 
+# USE:
+$ apt update
+$ apt upgrade
+$ apt install <package>
+$ apt list --installed
+# apt-cache - queries apt data 
+#  currently installed on the system from the sources configured via sources.list
+$ apt-cache search <package>
+$ apt-cache 
+
+# NOTE: You can install this on a Mac, but I choose not to at this point.
+```
+
 ## SEARCHING
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
 ```bash
@@ -641,13 +668,6 @@ $ cat access.log | grep -E 'php|POST|HEAD|DNS'
 # huge man file and particularly useful, note security issues with it
 $ lsof > ~/open_files.txt
 ```
-## SCRIPTING
-```bash
-# Don't forget:
-$ chmod +x script.sh
-```
-- [Bash Scripting Cheatsheet](https://devhints.io/bash)
-- [Wikibooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting)
 
 ## SOCIAL ENGINEERING
 ```bash
@@ -655,16 +675,6 @@ $ chmod +x script.sh
 # Harvester
 
 ```
-## DEV TOOLS, CODE & SCRIPTING
-### maven
-apache maven will build your jar files from java source packages. 
-```bach
-# from your project-dir/pom.xml folder
-$ mvn package
-# you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
-```
-### SQL
-- sqlmap
 
 ## IMAGES & GRAPHICS
 ### ExifTool
