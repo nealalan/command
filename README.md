@@ -58,7 +58,7 @@ $ ln -s '/Users/neal/Google Drive/PHOTOS/' Pictures
 # And my ~/Desktop/Screenshots/ to point to ~/Google Drive/PHOTOS/Screenshots/
 $ ln -s '/Users/neal/Google Drive/PHOTOS/Screenshots/' Screenshots
 ```
-STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
+SED / STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
 ```bash
 # Install GNU `sed`, overwriting the built-in `sed` on MacOS
 $ brew install gnu-sed --with-default-names
@@ -83,27 +83,7 @@ $ sed -ri ':1
 ubuntu@nealalan:~$ uname -a
 Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
-```bash
-# CHGRP - change group ownership
-# Change the group of /u and subfiles to "admin".
-$ chgrp -hR admin /u
-# Change the current folder, all subfolders and files to the group "nealalan.com"
-$ chgrp -hR nealalan.com .
-              
-```
-### processes
-```bash
-$ systemctl start
-$ systemctl stop
-$ systemctl status <servicename>
 
-# journalctl - Log file for the system to help debug when a server doesn’t start
-$ journalctl -xe
-
-# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
-# service <servicename> status
-$ service --status-all
-```
 ### remote connections
 ```bash
 $ ssh -i <pem> <user>@<ip>
@@ -134,7 +114,15 @@ $ sudo nano /etc/ssh/sshd_config
 #     allowAllowUsers neal
 
 ```
-
+CHGRP - Group Ownership
+```bash
+# CHGRP - change group ownership
+# Change the group of /u and subfiles to "admin".
+$ chgrp -hR admin /u
+# Change the current folder, all subfolders and files to the group "nealalan.com"
+$ chgrp -hR nealalan.com .
+              
+```
 ## AUDIO / VIDEO
 MP3 Audio and MP4 Video downloader
 ```bash
@@ -716,16 +704,32 @@ brew install zopfli
 ```
 
 ## MONITORING
+
 ```bash
-# SYSTEM IO MONITORING LOOP
+# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
+# service <servicename> status
+$ service --status-all
+```
+SYSTEM IO MONITORING LOOP
+```bash
 # writes out the activity  on the system every 3 seconts
 $ while true ; do iostat -w 3 ; done
-
-# TOP -- display and update sorted information about processes
+```
+TOP -- display and update sorted information about processes
+```bash
 $ top -o cpu -O +rsize -s 3
-
-# IFTOP -- Interface top in a refreshing screen with cum view
+```
+IFTOP -- Interface top in a refreshing screen with cum view
+```bash
 $ sudo iftop -i en0
+```
+SYSTEMCTL & JOURNALCTL
+```bash
+$ systemctl start
+$ systemctl stop
+$ systemctl status <servicename>
+# journalctl - Log file for the system to help debug when a server doesn’t start
+$ journalctl -xe
 ```
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
