@@ -77,7 +77,114 @@ $ sed -ri ':1
          s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
          t1' <ssn.txt>
 ```
-## CONFIGURATION - MacOS / Darwin Specific
+
+## ACCOUNTS / SYS ADMINISTRATION
+```bash
+ubuntu@nealalan:~$ uname -a
+Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+```
+```bash
+# CHGRP - change group ownership
+# Change the group of /u and subfiles to "admin".
+$ chgrp -hR admin /u
+# Change the current folder, all subfolders and files to the group "nealalan.com"
+$ chgrp -hR nealalan.com .
+              
+```
+### processes
+```bash
+$ systemctl start
+$ systemctl stop
+$ systemctl status <servicename>
+
+# journalctl - Log file for the system to help debug when a server doesn’t start
+$ journalctl -xe
+
+# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
+# service <servicename> status
+$ service --status-all
+```
+### remote connections
+```bash
+$ ssh -i <pem> <user>@<ip>
+$ scp -i <pem> <local> <dest>
+```
+
+### users & accounts
+```bash
+$ adduser
+$ addgroup
+$ chown
+
+# FILE ACCESS CONTROL LIST
+$ getfacl <file>
+$ setfacl -m u:user2:rwx example/
+$ setfacl -m g:group1:rwx ./
+
+# ADDING A NEW USER
+$ sudo adduser neal
+$ sudo su neal (either way)
+$ cd /home/neal
+$ sudo mkdir .ssh
+$ sudo ssh-keygen
+$ sudo usermod -aG sudo neal   // add to group sudo
+$ sudo cat nealkey.pub > authorized_keys
+$ sudo nano /etc/ssh/sshd_config
+#     UsePAM yes
+#     allowAllowUsers neal
+
+```
+
+## AUDIO / VIDEO
+MP3 Audio and MP4 Video downloader
+```bash
+# INSTALL:
+$ brew install youtube-dl
+# USE:
+# to download video file
+$ youtube-dl <https://link>
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true)
+
+```bash
+# to download audio file as mp3 and 320K bitrate
+$ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true)
+
+Audio / Video player install
+```bash
+# Install MPV https://mpv.io/installation/
+$ brew install mpv
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.54.31.jpg?raw=true)
+
+Audio Player
+```bash
+# from the command line you can use the arrow keys to control the playback of the audio
+$ mpv <file.mp3>
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.55.27.jpg?raw=true)
+
+Video Player
+```bash
+# interact with the video player that is spawned from the command line
+$ mpv <file.mp4>
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
+
+### AWS
+AWS & [LOCALSTACK](https://github.com/localstack/localstack)
+```bash
+# INSTALL:
+$ brew install aws-cli
+$ pip install localstack
+# USE:
+```
+
+## CONFIGURATIONS 
+### MacOS / Darwin Specific
 APPLE XCODE COMMAND LINE DEVELOPMENT
 ```bash
 # INSTALL: 
@@ -136,6 +243,7 @@ $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
 ```
 
 ## CTF / DEVSEC / PENTEST
+
 ```bash
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng
@@ -162,6 +270,70 @@ brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
 brew install xpdf
 brew install xz
+```
+### CURL - use to find internet IP address
+```bash
+$ curl http://169.254.169.254/
+```
+
+### NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+```bash
+#  -r show the routing tables
+#  -s Show per-protocol statistics
+#  -tu tcp & udp
+$ netstat
+$ netstat -a | more
+```
+### SS
+```bash
+# SS
+$ ss -l
+$ ss -ntp
+$ ss -tupl
+```
+### NSLOOKUP - QUERY INTERNET NAME SERVERS INTERACTIVELY
+```bash
+# returns the domain name server the IP to domain resolution came from
+# -type=SOA : find out the server of authority = might not work
+$ nslookup neonaluminum.com
+```
+
+### DIG - DOMAIN INFORMATION GATHERING
+```bash
+# primarily used for DNS queries of A, TXT, MX, SOA, NS record sets
+$ dig neonaluminum.com
+# trace trace the domain server of authority (SOA)
+$ dig +trace neonaluminum.com
+# pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
+$ dig neonaluminum.com ANY +noall +answer
+```
+
+### WHOIS - QUERY IANA.ORG FOR DOMAIN INFO
+```bash
+$ whois neonaluminum.com
+```
+
+### SHODAN
+
+### DIRB
+```bash
+$ dirb 10.10.50.2
+```
+### METASPLOIT
+```bash
+# metaspolit console
+$ msfconsole
+$4search shellshock
+$ show options
+# LOAD PARMS
+$ set RHOST 10.10.50.2
+$ set TARGETURI /cgi-bin/test-cgi
+```
+### SOCIAL ENGINEERING
+```bash
+# Discovery
+# Harvester
+
 ```
 
 ## DEV TOOLS, CODE & SCRIPTING
@@ -195,6 +367,24 @@ $ sudo easy_install pip
 ### SQL
 - sqlmap
 
+## ENCRYPTION
+
+### CHECKSUMS / MD5
+```bash
+# MD5 - calculate a message-digest fingerprint (checksum) for a file
+# syntax: md5 [-pqrtx] [-s string] [file ...]
+```
+
+### PGP
+```bash
+# Install GnuPG to enable PGP-signing commits.
+$ brew install gnupg
+# I ran into some conflicts and had to perform a 
+$ brew reinstall gnupg
+$ gpg --version
+$ gpg -K
+```
+
 ## FILES
 ```bash
 # DIRECTORY/FILE COLLAPSE
@@ -224,8 +414,197 @@ I use this to sync music to backups and other computers
 # SYNCH FILES ACROSS COMPUTER, DISPLAY DELETED FILES ONLY
 $ rsync -azP --delete -n ./ /Volumes/USB20FD/Music | grep 'deleting'
 ```
-## TOOLS & SOFTWARE
 
+
+## FONTS
+```bash
+# Install font tools.
+brew tap bramstein/webfonttools
+brew install sfnt2woff
+brew install sfnt2woff-zopfli
+brew install woff2
+```
+
+## GIT
+First time using a repo
+…or create a new repository on the command line
+```bash
+echo "# neonaluminum.com" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:nealalan/neonaluminum.com.git
+git push -u origin master
+```
+…or push an existing repository from the command line
+```bash
+git remote add origin git@github.com:nealalan/neonaluminum.com.git
+git push -u origin master
+```
+Regular daily use
+```bash
+$ git status
+$ git push
+$ git clone git@github.com:nealalan/command.git
+
+```
+a trick i found on stackoverflow when .git/index.lock gives Permission Denied
+```bash
+$ sudo chown -R : .git  # change group
+$ sudo chmod -R 775 .git  # change permission
+```
+
+### git setup
+```bash
+# CREATE SSH KEY TO ADD TO GITHUB
+$ ssh-keygen -t rsa -C "neal@email.com"
+
+# TEST OUT THE SSH CONNECTION ON YOUR BOX
+$ ssh -T git@github.com
+
+# SET AN HTTPS CLONE TO AN SSH PUSH
+# so i pulled down something before I setup ssh and made a bunch of changes 
+# i wanted to push back. so I used this command to changed it to SSH push
+$ git remote set-url origin git@github.com:nealalan/nealalan.com.git
+```
+
+### hub
+hub is a github utility that lets you *create a repo remotely* 
+- [https://hub.github.com/](https://hub.github.com/)
+- to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
+```bash
+These GitHub commands are provided by hub:
+
+   browse         Open a GitHub page in the default browser
+   ci-status      Show the status of GitHub checks for a commit
+   compare        Open a compare page on GitHub
+   create         Create this repository on GitHub and add GitHub as origin
+   delete         Delete a repository on GitHub
+   fork           Make a fork of a remote repository on GitHub and add as remote
+   issue          List or create GitHub issues
+   pr             List or checkout GitHub pull requests
+   pull-request   Open a pull request on GitHub
+   release        List or create GitHub releases
+   sync           Fetch git objects from upstream and update branches
+```
+## IMAGES & GRAPHICS
+### ExifTool
+Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
+And an [exiftool cheatsheet by rjames86](https://gist.github.com/rjames86/33b9af12548adf091a26)
+```bash
+# ExifTool - Read, Write and Edit Meta Info 
+# Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
+# [Installing](https://www.sno.phy.queensu.ca/~phil/exiftool/install.html) exiftool:
+$ brew install exiftool
+# To show all metadata stored on a file AND THE FILE INFO (some info comes from the OS)
+$ exiftool photo.jpg
+$ exiftool photo.jpg | grep -E 'File Name|Create Date'
+```
+Manually manipulate metadata fields
+```bash
+# Quick and dirty way for a while directory
+$ exiftool "-AllDates=1986:11:05 12:00:00" -if '$filetype eq "JPEG"' .
+# Field at a time
+$ exiftool '-datetimeoriginal=2015:01:18 12:00:00' .
+```
+A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
+```bash
+# this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
+#  Note: filtering out PNG and MP4 files. 
+$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
+$ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
+# this will rename Ex:
+$ exiftool '-testname<%f-$imagesize.%e' ./*.JPG
+$ exiftool '-FileName<%f-$imagesize.%e' ./*.JPG
+```
+Note: to rename a file using the date for an iOS PNG that doesn't stote the CreateDate, we can use the -FileCreateDate. It is possible to use an exiftool command to update the exif CreateDate using the FileCreateDate info, but I'm choosing not to do that since the scope for me is just to rename the files.
+```bash
+$ exiftool "-testname<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
+$ exiftool "-FileName<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
+$ exiftool '-testname<%f-$imagesize.%e' ./*.PNG
+$ exiftool '-FileName<%f-$imagesize.%e' ./*.PNG
+```
+Moving files
+```bash
+# move from DIR into folders by image date
+$ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
+```
+Incase you do want to update PNG metadata CreateDate you can do it like this
+
+![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
+
+## PACKAGE MANAGERS
+### BREW (HOMEBREW) PACKAGE MANAGER
+```bash
+# INSTALL:
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# CHECK STATUS:
+$ brew doctor
+```
+OTHER BREW COMMANDS
+```bash
+# SEE WHAT'S INSTALLED:
+$ brew list && brew cask list
+$ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
+$ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
+
+# CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
+$ brew bundle dump
+$ brew Brewfile
+
+# SEARCHING FOR INSTALLABLE PACKAGES
+$ brew search
+
+# REMOVE OUTDATES VERSIONS (from the cellar):
+brew cleanup
+
+# CHECK FOR UPDATES:
+$ brew update
+$ brew upgrade
+```
+
+### APT PACKAGE MANAGER - native in Ubuntu
+```bash
+# APT / APT-GET -provides a high-level command line interface for the package management system
+#  -y default yes
+#  update = d/l package info from all configured sources
+#  upgrade = install avai upgrades of all packages 
+# USE:
+$ apt update
+$ apt upgrade
+$ apt install <package>
+$ apt list --installed
+# apt-cache - queries apt data 
+#  currently installed on the system from the sources configured via sources.list
+$ apt-cache search <package>
+$ apt-cache 
+
+# NOTE: You can install this on a Mac, but I choose not to at this point.
+
+# CREATE A LIST OF INSTALLED PACKAGES 
+$ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
+```
+
+## SEARCHING
+particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
+```bash
+# SEARCH A FILE FOR SPECIFIC CONTENT
+# -H : print the filename of each match
+# --max-count=#
+# -c : suppress output and count matching lines
+# -v : inverse matching
+# -E : regex pattern search (or text search)
+$ cat access.log | grep -E 'php|POST|HEAD|DNS'
+```
+![](https://raw.githubusercontent.com/nealalan/command/master/images/grep-E.png)
+
+```bash
+# LSOF -- list open files
+# huge man file and particularly useful, note security issues with it
+$ lsof > ~/open_files.txt
+```
+
+## TOOLS & SOFTWARE
 WEBTORRENT
 ```bash
 # DARWIN:
@@ -300,23 +679,8 @@ $ wget -P ~/Downloads/ https://download.virtualbox.org/virtualbox/5.2.18/Virtual
 ```
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-09-29%20at%2014.48.24.jpg?raw=true)
 
-ENCRYPTION
-```bash
-# Install GnuPG to enable PGP-signing commits.
-$ brew install gnupg
-# I ran into some conflicts and had to perform a 
-$ brew reinstall gnupg
-$ gpg --version
-$ gpg -K
-```
 
-AWS & [LOCALSTACK](https://github.com/localstack/localstack)
-```bash
-# INSTALL:
-$ brew install aws-cli
-$ pip install localstack
-# USE:
-```
+
 
 Text Based Web Browser - This is what I started using in 1994 on Freenets when I started writing HTML
 ```bash
@@ -351,119 +715,6 @@ brew install vbindiff
 brew install zopfli
 ```
 
-
-
-## AUDIO / VIDEO
-MP3 Audio and MP4 Video downloader
-```bash
-# INSTALL:
-$ brew install youtube-dl
-# USE:
-# to download video file
-$ youtube-dl <https://link>
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true)
-
-```bash
-# to download audio file as mp3 and 320K bitrate
-$ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://link>
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true)
-
-Audio / Video player install
-```bash
-# Install MPV https://mpv.io/installation/
-$ brew install mpv
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.54.31.jpg?raw=true)
-
-Audio Player
-```bash
-# from the command line you can use the arrow keys to control the playback of the audio
-$ mpv <file.mp3>
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.55.27.jpg?raw=true)
-
-Video Player
-```bash
-# interact with the video player that is spawned from the command line
-$ mpv <file.mp4>
-```
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
-![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
-
-## FONTS
-```bash
-# Install font tools.
-brew tap bramstein/webfonttools
-brew install sfnt2woff
-brew install sfnt2woff-zopfli
-brew install woff2
-```
-
-## GIT
-First time using a repo
-…or create a new repository on the command line
-```bash
-echo "# neonaluminum.com" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:nealalan/neonaluminum.com.git
-git push -u origin master
-```
-…or push an existing repository from the command line
-```bash
-git remote add origin git@github.com:nealalan/neonaluminum.com.git
-git push -u origin master
-```
-Regular daily use
-```bash
-$ git status
-$ git push
-$ git clone git@github.com:nealalan/command.git
-
-```
-a trick i found on stackoverflow when .git/index.lock gives Permission Denied
-```bash
-$ sudo chown -R : .git  # change group
-$ sudo chmod -R 775 .git  # change permission
-```
-
-### git setup
-```bash
-# CREATE SSH KEY TO ADD TO GITHUB
-$ ssh-keygen -t rsa -C "neal@email.com"
-
-# TEST OUT THE SSH CONNECTION ON YOUR BOX
-$ ssh -T git@github.com
-
-# SET AN HTTPS CLONE TO AN SSH PUSH
-# so i pulled down something before I setup ssh and made a bunch of changes 
-# i wanted to push back. so I used this command to changed it to SSH push
-$ git remote set-url origin git@github.com:nealalan/nealalan.com.git
-```
-
-### hub
-hub is a github utility that lets you *create a repo remotely* 
-- [https://hub.github.com/](https://hub.github.com/)
-- to use it you'll need to also install [Go](https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79) 
-```bash
-These GitHub commands are provided by hub:
-
-   browse         Open a GitHub page in the default browser
-   ci-status      Show the status of GitHub checks for a commit
-   compare        Open a compare page on GitHub
-   create         Create this repository on GitHub and add GitHub as origin
-   delete         Delete a repository on GitHub
-   fork           Make a fork of a remote repository on GitHub and add as remote
-   issue          List or create GitHub issues
-   pr             List or checkout GitHub pull requests
-   pull-request   Open a pull request on GitHub
-   release        List or create GitHub releases
-   sync           Fetch git objects from upstream and update branches
-```
-
 ## MONITORING
 ```bash
 # SYSTEM IO MONITORING LOOP
@@ -493,54 +744,12 @@ $ apt install speedtest-cli
 ```
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-08-30%20at%209.05.35%20PM.jpg?raw=true)
 
-IFCONFIG - use to find intranet IP address
-```bash
-$ icfongif | grep 'inet'
-```
-CURL - use to find internet IP address
-```bash
-$ curl http://169.254.169.254/
-```
 IFCONFIG - network interface configuration & routing for the computer ports
 ```bash
 $ ifconfig en0
+$ ifconfig | grep 'inet'
 ```
-NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
-```bash
-#  -r show the routing tables
-#  -s Show per-protocol statistics
-#  -tu tcp & udp
-$ netstat
-$ netstat -a | more
 
-# SS
-$ ss -l
-$ ss -ntp
-$ ss -tupl
-
-# NSLOOKUP - QUERY INTERNET NAME SERVERS INTERACTIVELY
-# returns the domain name server the IP to domain resolution came from
-# -type=SOA : find out the server of authority = might not work
-$ nslookup neonaluminum.com
-# PING
-
-# DIG - DOMAIN INFORMATION GATHERING
-# primarily used for DNS queries of A, TXT, MX, SOA, NS record sets
-$ dig neonaluminum.com
-# trace trace the domain server of authority (SOA)
-$ dig +trace neonaluminum.com
-# pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
-$ dig neonaluminum.com ANY +noall +answer
-
-# CURL
-
-# WHOIS - QUERY IANA.ORG FOR DOMAIN INFO
-$ whois neonaluminum.com
-
-# SHODAN
-# DIRB
-$ dirb 10.10.50.2
-```
 - [iptables essentials](https://nocsma.wordpress.com/2016/10/21/iptables-essentials-common-firewall-rules-and-commands/)
 
 ### nc / netcat 
@@ -592,197 +801,6 @@ $ scutil --proxy
 $ scutil --dns
 $ scutil --get ComputerName
 ``` 
-## METASPLOIT
-```bash
-# metaspolit console
-$ msfconsole
-$4search shellshock
-$ show options
-# LOAD PARMS
-$ set RHOST 10.10.50.2
-$ set TARGETURI /cgi-bin/test-cgi
-```
-## PACKAGE MANAGERS
-BREW (HOMEBREW) PACKAGE MANAGER
-```bash
-# INSTALL:
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# CHECK STATUS:
-$ brew doctor
-```
-OTHER BREW COMMANDS
-```bash
-# SEE WHAT'S INSTALLED:
-$ brew list && brew cask list
-$ system_profiler -detailLevel full SPApplicationsDataType >> installed_software_$(date "+%Y%m%d_%H%M%S").txt
-$ brew ls --full-name --versions >>  installed_software_$(date +"%Y%m%d_%H%M%S").txt
-
-# CREATE 'Brewfile' LIST OF INSTALLS & INSTALL LIST IN 'Brewfile'
-$ brew bundle dump
-$ brew Brewfile
-
-# ... IN UBUNTU
-$ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
-
-# REMOVE OUTDATES VERSIONS (from the cellar):
-brew cleanup
-
-# CHECK FOR UPDATES:
-$ brew update
-$ brew upgrade
-```
-APT PACKAGE MANAGER - native in Ubuntu
-```bash
-# APT / APT-GET -provides a high-level command line interface for the package management system
-#  -y default yes
-#  update = d/l package info from all configured sources
-#  upgrade = install avai upgrades of all packages 
-# USE:
-$ apt update
-$ apt upgrade
-$ apt install <package>
-$ apt list --installed
-# apt-cache - queries apt data 
-#  currently installed on the system from the sources configured via sources.list
-$ apt-cache search <package>
-$ apt-cache 
-
-# NOTE: You can install this on a Mac, but I choose not to at this point.
-```
-
-## SEARCHING
-particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
-```bash
-# SEARCH A FILE FOR SPECIFIC CONTENT
-# -H : print the filename of each match
-# --max-count=#
-# -c : suppress output and count matching lines
-# -v : inverse matching
-# -E : regex pattern search (or text search)
-$ cat access.log | grep -E 'php|POST|HEAD|DNS'
-```
-![](https://raw.githubusercontent.com/nealalan/command/master/images/grep-E.png)
-
-```bash
-# LSOF -- list open files
-# huge man file and particularly useful, note security issues with it
-$ lsof > ~/open_files.txt
-```
-
-## SOCIAL ENGINEERING
-```bash
-# Discovery
-# Harvester
-
-```
-
-## IMAGES & GRAPHICS
-### ExifTool
-Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
-And an [exiftool cheatsheet by rjames86](https://gist.github.com/rjames86/33b9af12548adf091a26)
-```bash
-# ExifTool - Read, Write and Edit Meta Info 
-# Info: https://www.sno.phy.queensu.ca/~phil/exiftool/
-# [Installing](https://www.sno.phy.queensu.ca/~phil/exiftool/install.html) exiftool:
-$ brew install exiftool
-# To show all metadata stored on a file AND THE FILE INFO (some info comes from the OS)
-$ exiftool photo.jpg
-$ exiftool photo.jpg | grep -E 'File Name|Create Date'
-```
-Manually manipulate metadata fields
-```bash
-# Quick and dirty way for a while directory
-$ exiftool "-AllDates=1986:11:05 12:00:00" -if '$filetype eq "JPEG"' .
-# Field at a time
-$ exiftool '-datetimeoriginal=2015:01:18 12:00:00' .
-```
-A useful command to [rename all your files](https://www.sno.phy.queensu.ca/~phil/exiftool/#filename) based on the date. See [advanced features](https://www.sno.phy.queensu.ca/~phil/exiftool/filename.html) also.
-```bash
-# this will rename Ex: IMG_0001.JPG to 20180704_113201.JPG
-#  Note: filtering out PNG and MP4 files. 
-$ exiftool "-testname<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
-$ exiftool "-FileName<CreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.JPG
-# this will rename Ex:
-$ exiftool '-testname<%f-$imagesize.%e' ./*.JPG
-$ exiftool '-FileName<%f-$imagesize.%e' ./*.JPG
-```
-Note: to rename a file using the date for an iOS PNG that doesn't stote the CreateDate, we can use the -FileCreateDate. It is possible to use an exiftool command to update the exif CreateDate using the FileCreateDate info, but I'm choosing not to do that since the scope for me is just to rename the files.
-```bash
-$ exiftool "-testname<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
-$ exiftool "-FileName<FileCreateDate" -d %Y%m%d_%H%M%S-%%f.%%e ./*.PNG
-$ exiftool '-testname<%f-$imagesize.%e' ./*.PNG
-$ exiftool '-FileName<%f-$imagesize.%e' ./*.PNG
-```
-Moving files
-```bash
-# move from DIR into folders by image date
-$ exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" ./
-```
-Incase you do want to update PNG metadata CreateDate you can do it like this
-
-![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
-
-## ENCRYPTION
-```bash
-# MD5 - calculate a message-digest fingerprint (checksum) for a file
-# syntax: md5 [-pqrtx] [-s string] [file ...]
-```
-## SYSTEM ADMINISTRATION
-```bash
-ubuntu@nealalan:~$ uname -a
-Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
-```
-```bash
-# CHGRP - change group ownership
-# Change the group of /u and subfiles to "admin".
-$ chgrp -hR admin /u
-# Change the current folder, all subfolders and files to the group "nealalan.com"
-$ chgrp -hR nealalan.com .
-              
-```
-### processes
-```bash
-$ systemctl start
-$ systemctl stop
-$ systemctl status <servicename>
-
-# journalctl - Log file for the system to help debug when a server doesn’t start
-$ journalctl -xe
-
-# SHOW STATUS OF WHAT'S CURRENTLY RUNNING
-# service <servicename> status
-$ service --status-all
-```
-### remote connections
-```bash
-$ ssh -i <pem> <user>@<ip>
-$ scp -i <pem> <local> <dest>
-```
-
-### users & accounts
-```bash
-$ adduser
-$ addgroup
-$ chown
-
-# FILE ACCESS CONTROL LIST
-$ getfacl <file>
-$ setfacl -m u:user2:rwx example/
-$ setfacl -m g:group1:rwx ./
-
-# ADDING A NEW USER
-$ sudo adduser neal
-$ sudo su neal (either way)
-$ cd /home/neal
-$ sudo mkdir .ssh
-$ sudo ssh-keygen
-$ sudo usermod -aG sudo neal   // add to group sudo
-$ sudo cat nealkey.pub > authorized_keys
-$ sudo nano /etc/ssh/sshd_config
-#     UsePAM yes
-#     allowAllowUsers neal
-
-```
 
 ## WORDPRESS
 - wordpress-online-vulnerabilitty-scanners
@@ -792,9 +810,5 @@ $ sudo nano /etc/ssh/sshd_config
 ## More Useful CLI tools
 - xmodulo.com/useful-cli-tools-linux-system-admins.html
 
-```bash
-# DARWIN / MAC -- DISPLAY INSTALLABLE TOOLS USING BREW
-$ brew search
-```
 
 [[edit](https://github.com/nealalan/command/edit/master/README.md)]
