@@ -162,9 +162,6 @@ $ mpv <file.mp4>
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
 
-### Automate dl from yt
-Automate the whole process with [ytdlrc](https://github.com/bardisty/ytdlrc)
-
 ## AWS
 AWS & [LOCALSTACK](https://github.com/localstack/localstack)
 ```bash
@@ -478,17 +475,6 @@ These GitHub commands are provided by hub:
    release        List or create GitHub releases
    sync           Fetch git objects from upstream and update branches
 ```
-
-## [GCP](https://cloud.google.com/) - Google Cloud Platform
-- [Google Cloud Free Tier Info](https://cloud.google.com/free/)
-- [Console Dashboard](https://console.cloud.google.com/home/dashboard)
-
-### Google Drive
-- [Access Google Drive from Linux CLI](https://www.howtoforge.com/tutorial/how-to-access-google-drive-from-linux-gdrive/)
-
-### Google Shell
-- [https://console.cloud.google.com/home/dashboard?cloudshell=true](https://console.cloud.google.com/home/dashboard?cloudshell=true)
-
 ## IMAGES & GRAPHICS
 ### ExifTool
 Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
@@ -797,7 +783,7 @@ $ lynx nealalan.github.io
 ```
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-19%20at%2012.26.04.jpg?raw=true)
 
-.....
+..... Other things I haven't documented yet
 ```bash
 brew install openssh
 brew install homebrew/php/php56 --with-gmp
@@ -805,7 +791,6 @@ brew install homebrew/php/php56 --with-gmp
 # Install other useful binaries.
 brew install ack
 #brew install exiv2
-brew install git
 brew install git-lfs
 brew install imagemagick --with-webp
 brew install lua
