@@ -475,6 +475,13 @@ These GitHub commands are provided by hub:
    release        List or create GitHub releases
    sync           Fetch git objects from upstream and update branches
 ```
+## Google Cloud
+### Google Console
+
+### Google Drive
+- [Access Google Drive from Linux CLI](https://www.howtoforge.com/tutorial/how-to-access-google-drive-from-linux-gdrive/)
+
+
 ## IMAGES & GRAPHICS
 ### ExifTool
 Here's a list of all the [EXIF meta-data tags](https://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html)
