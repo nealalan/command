@@ -229,7 +229,22 @@ $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize -intege
 # To reset to no limit
 $ sudo defaults write /Library/Preferences/com.apple.TimeMachine MaxSize
 ```
+## Mojave Update Issues
+I started seeing errors using homebrew after upgrading to macOS Mojave 10.14. It appears paths were removed.
+```bash
+$ brew upgrade
+```
+Resulted in:
+```bash
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+```
+To fix this [[article]](https://apple.stackexchange.com/questions/254380/macos-mojave-invalid-active-developer-path):
+```bash
+$ xcode-select --install
+# RESULTS IN:
+xcode-select: note: install requested for command line developer tools
 
+```
 ## CTF / DEVSEC / PENTEST
 
 ```bash
