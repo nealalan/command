@@ -323,6 +323,13 @@ brew install ucspi-tcp # `tcpserver` etc.
 brew install xpdf
 brew install xz
 ```
+
+### [Burp Suite](https://portswigger.net/burp#essential-manual-tools)
+Not a command line tool, but here's info:
+- Burp Proxy allows manual testers to intercept all requests and responses between the browser and the target application, even when HTTPS is being used.
+- You can view, edit or drop individual messages to manipulate the server-side or client-side components of the application.
+- The target site map shows all of the content that has been discovered in sites being tested.
+
 ### CURL - use to find internet IP address
 ```bash
 $ curl http://169.254.169.254/
