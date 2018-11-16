@@ -372,7 +372,22 @@ $ dig neonaluminum.com ANY +noall +answer
 $ whois neonaluminum.com
 ```
 
-### SHODAN
+### [SHODAN](https://www.shodan.io/)
+The search engine ([API](https://developer.shodan.io/api)) for security.
+
+
+```bash
+# INSTALL (Mac):
+$ easy_install shodan
+$ shodan init YOUR_API_KEY
+
+# Reverse lookup for an IP address 
+#   In browser: https://api.shodan.io/dns/reverse?ips=8.8.8.8&key={YOUR_API_KEY}
+$ shodan host 8.8.8.8
+
+# Search shodan
+$ shodan search --fields ip_str,port,org,hostnames microsoft iis 6.0
+```
 
 ### DIRB
 ```bash
