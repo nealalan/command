@@ -83,6 +83,10 @@ $ sed -ri ':1
 ubuntu@nealalan:~$ uname -a
 Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
+Change to root
+```bash
+$ sudo -u root bash
+```
 
 ### remote connections
 ```bash
