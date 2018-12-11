@@ -2,6 +2,18 @@
 
 
 ## COMMANDS 101 
+FIRST
+Change the command line to something civil and meaningful.
+```bash
+# see what the prompt is set to, if nothing then we can add one... if something, you can search 
+#  how to set all sorts of things including flashing text.
+$ cat ~/.bashrc | grep PS1
+# to edit... I started using [PICO editor](https://en.wikipedia.org/wiki/Pico_(text_editor) in 1992 or 1993
+#  it's now deprecated to NANO editor - something REALLY FANCY is you can add -m to use the MOUSE!!!
+$ nano ~/.bashrc
+# Add this line:
+export PS1="(\D{%F %T}) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+```
 Basic commands to navigate use the command line
 ECHO - write arguments to the standard output
 ```bash
