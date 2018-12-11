@@ -28,6 +28,8 @@ CAT - concatenate and print files
 #  -t -v display non-printable characters
 $ cat cat.txt
 $ cat cat.txt cat.txt > 2cats.txt
+# On a linux distro besides Mac / Darwin, try
+$ cat /etc/os-release
 ```
 HEAD (display the first lines of a file) & TAIL (display the last part of a file)
 ```bash
