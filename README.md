@@ -352,6 +352,21 @@ Not a command line tool, but here's info:
 ```bash
 $ curl http://169.254.169.254/
 ```
+Also you can curl ifconfig.co and it will return your IPv4 or IPv6 IP address
+```bash
+$ curl -4 ifconfig.co
+$ curl -6 ifconfig.co
+```
+Or for cool output, install "TOIlet"
+```bash
+# INSTALL LINUX:
+$ sudo apt install -y toilet
+# INSTALL MAC:
+$ brew install toilet
+# use
+$ curl -s4 ifconfig.co | toilet -w 140 -f mono12
+```
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-12-15%20at%205.56.32%20PM.jpg?raw=true)
 
 ### NETSTAT - show network status, network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
 ```bash
