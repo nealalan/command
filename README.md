@@ -640,6 +640,31 @@ Incase you do want to update PNG metadata CreateDate you can do it like this
 
 ![](https://raw.githubusercontent.com/nealalan/command/master/images/Screen%20Shot%202018-07-09%20at%2013.48.47.png)
 
+### Imagemagic 
+My first need was to convert all PNG files to JPG. The iPhone creates PNGs out of screenshots and they take up too much room!!!
+
+```bash
+# INSTALL
+$ brew install imagemagick
+```
+
+```bash
+$ convert
+```
+
+```bash
+$ mogrify
+# To see output and compress
+$ for i in *.PNG; do mogrify -resize 75% -format jpg "$i"; echo "$i converted to ${i%.*}.jpg"; done
+# To see output and compress and remove the PNG files
+$ for i in *.PNG; do mogrify -resize 75% -format jpg "$i" && rm "$i"; echo "$i converted to ${i%.*}.jpg"; done
+```
+
+Install the ghostscript package will allow for converting PDF's to JPG's
+```bash
+$ brew install ghostscript
+```
+
 ## MONITORING
 
 ```bash
