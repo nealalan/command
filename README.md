@@ -11,11 +11,9 @@ Regarding editing... I started using [PICO editor](https://en.wikipedia.org/wiki
 $ cat ~/.bashrc | grep PS1
 # edit...
 $ nano ~/.bashrc
-# Add this line:
-	export PS1="(\D{%F %T}) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-
-# ignore this, it makes Jekyll happy --> %}
+# Add this line....
 ```
+This line found in [this gist](https://gist.github.com/nealalan/1159f6ffd341ebc885aa8006749bd8fd). I can't put it in this document because Jekyll markdown freaks out!
 
 Basic commands to navigate use the command line
 ECHO - write arguments to the standard output
