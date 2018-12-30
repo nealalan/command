@@ -12,8 +12,10 @@ $ cat ~/.bashrc | grep PS1
 # edit...
 $ nano ~/.bashrc
 # Add this line:
-export PS1="(\D{%F %T}) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+	export PS1="(\D{%F %T}) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
 ```
+
 Basic commands to navigate use the command line
 ECHO - write arguments to the standard output
 ```bash
