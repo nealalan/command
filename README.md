@@ -696,6 +696,41 @@ $ journalctl -xe
 ```
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
+## MySQL / MariaDB
+Basic commands:
+```bash
+# LOGIN:
+$ mysql -u root -p
+```
+
+```sql
+
+# EXIT:
+> exit;
+
+
+```
+
+#### So I forgot my password to access MySQL. To reset it:
+```bash
+# Stop the MySQL Server:
+$ sudo /etc/init.d/mysql stop
+# Start the mysqld configuration:
+$ sudo mysqld --skip-grant-tables &
+# Login to MySQL as root:
+$ mysql -u root mysql
+# Replace YOURNEWPASSWORD with your new password:
+> UPDATE
+  mysql.user
+SET
+  Password = PASSWORD('YOURNEWPASSWORD')
+WHERE
+  User = 'root';
+FLUSH PRIVILEGES;
+exit;
+```
+
+
 ## NETWORKING
 NETWORK MONITORING
 ```bash
