@@ -697,19 +697,30 @@ $ journalctl -xe
 - note-to-self: need to check out mytop, mtop, innotop, mysqladmin
 
 ## MySQL / MariaDB
-Basic commands:
-```bash
-# LOGIN:
+- [mysql](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) - command line client
+- [mysqlshow](https://dev.mysql.com/doc/refman/8.0/en/mysqlshow.html) — Display Database, Table, and Column Information
+- [mysqladmin](https://dev.mysql.com/doc/refman/8.0/en/mysqladmin.html) - Client for Administering a MySQL Server 
+- [mysqlcheck](https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html) — A Table Maintenance Program (checks, repairs, optimizes, or analyzes tables.)
+- 
+```bash]
 $ mysql -u root -p
-```
-
-```sql
-
-# EXIT:
 > exit;
-
-
+> select version();
+> show databases;
+> use mysql
+> show tables;
 ```
+#### [Backup and Recovery](https://dev.mysql.com/doc/refman/8.0/en/backup-and-recovery.html)
+- [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) - A Database Backup Program
+  - dumps one or more MySQL databases for backup or transfer to another SQL server
+  - generate output in CSV, other delimited text, or XML format
+- [mysqlpump](https://dev.mysql.com/doc/refman/8.0/en/mysqlpump.html) — A Database Backup Program
+  - performs logical backups, producing a set of SQL statements that can be executed to reproduce the original database object definitions and table data. 
+  - dumps one or more MySQL databases for backup or transfer to another SQL server
+- [mysqlimport](https://dev.mysql.com/doc/refman/8.0/en/mysqlimport.html) — A Data Import Program
+  - command-line interface to the LOAD DATA INFILE SQL statement
+  
+
 
 #### So I forgot my password to access MySQL. To reset it:
 ```bash
