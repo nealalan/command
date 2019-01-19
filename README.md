@@ -73,11 +73,13 @@ $ ln -s '/Users/neal/Google Drive/PHOTOS/' Pictures
 # And my ~/Desktop/Screenshots/ to point to ~/Google Drive/PHOTOS/Screenshots/
 $ ln -s '/Users/neal/Google Drive/PHOTOS/Screenshots/' Screenshots
 ```
+
 SED / STREAM EDITOR - Stream editing data, useful with Regex to change contents of a file from the command line
 ```bash
 # Install GNU `sed`, overwriting the built-in `sed` on MacOS
 $ brew install gnu-sed --with-default-names
 ```
+
 ```bash
 $ sed -f <text-commands>
 # deleted 1 and 3
@@ -92,6 +94,16 @@ $ sed -ri ':1
          s/(^|[^-0-9])[0-9]{9}([^-0-9]|$)/\1XXXXXXXXX\2/g
          t1' <ssn.txt>
 ```
+
+TEE - add / append input to a file
+```bash
+$ echo dog | tee -a text.txt
+$ echo cat | tee -a text.txt
+$ curl https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub | tee -a text.txt
+```
+
+![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202019-01-18%20at%208.49.35%20PM.jpg?raw=true)
+
 
 ## ACCOUNTS / SYS ADMINISTRATION
 ```bash
