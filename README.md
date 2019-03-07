@@ -1,5 +1,6 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
+- [An A-Z Index of the Apple macOS command line (OS X)](https://ss64.com/osx/)
 
 ## COMMANDS 101 
 FIRST
