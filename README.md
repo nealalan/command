@@ -161,10 +161,15 @@ MP3 Audio and MP4 Video downloader
 ```bash
 # INSTALL:
 $ brew install youtube-dl
+
 # USE:
 # to download video file
 $ youtube-dl <https://link>
+
+# to download videos with the best combination of audio and video, use:
+$ youtube-dl -f best <https://link>
 ```
+
 - With the war between youtube and youtube-dl... I found Homebrew didn't always install the latest. To install directly from youtube-dl (Note: this won't use a package manager!!!)
 ```bash
 $ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
