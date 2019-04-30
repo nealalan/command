@@ -174,7 +174,7 @@ $ youtube-dl -f best <https://link>
 ```bash
 $ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 $ sudo chmod a+rx /usr/local/bin/youtube-dl
-``
+```
 
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true)
 
