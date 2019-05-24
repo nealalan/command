@@ -1,5 +1,7 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
+TOC: [COMMANDS 101](), [ACCOUNTS / SYS ADMINISTRATION](),  
+
 - [An A-Z Index of the Apple macOS command line (OS X)](https://ss64.com/osx/)
 
 ## COMMANDS 101 
@@ -890,6 +892,40 @@ $ apt-cache
 # CREATE A LIST OF INSTALLED PACKAGES 
 $ sudo apt list --installed >> installed_software_$(date +"%Y%m%d_%H%M%S").txt
 ```
+
+## [PM2 - Advanced, production process manager for Node.js](http://pm2.keymetrics.io/) ([wikipedia](https://en.wikipedia.org/wiki/PM2_(software))) ([git](https://github.com/unitech/pm2))
+PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.
+
+#### Start, Stop, Restart an Application
+```bash
+$ pm2 start app_name_or_id
+$ pm2 stop app_name_or_id
+$ pm2 restart app_name_or_id
+```
+- PM2 will automatically assign an app name of the prefix
+
+#### Status of PM2 Processes
+```bash
+$ pm2 list
+$ pm2 info app_name_or_id
+```
+
+For a realtime monitor of processes:
+```bash
+$ app_name_or_id
+```
+
+#### Add PM2 as a Process
+```bash
+$ pm2 startup systemd
+$ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+$ systemctl status pm2-ubuntu
+```
+
+
+[edit](https://github.com/nealalan/api-stuff-201901/edit/master/readme.md)
+
+
 
 ## SEARCHING
 particularly useful when searching for a file or searching for content in a file, such as something suspecious in a log file
