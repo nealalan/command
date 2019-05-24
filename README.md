@@ -1,10 +1,32 @@
 # [nealalan.github.io](https://nealalan.github.io)/[command](https://nealalan.github.io/command)
 
-TOC: [COMMANDS 101](), [ACCOUNTS / SYS ADMINISTRATION](),  
+TOC: 
+- [COMMANDS 101](https://github.com/nealalan/command/blob/master/README.md#commands-101) 
+- [ACCOUNTS / SYS ADMINISTRATION](https://github.com/nealalan/command/blob/master/README.md#accounts--sys-administration),  
+- [AUDIO / VIDEO](https://github.com/nealalan/command/blob/master/README.md#audio--video)
+- [AWS](https://github.com/nealalan/command/blob/master/README.md#aws)
+- [CONFIGURATIONS](https://github.com/nealalan/command/blob/master/README.md#configurations) (systems)
+- [CTF / DEVSEC / PENTEST](https://github.com/nealalan/command/blob/master/README.md#ctf--devsec--pentest)
+- [DEV TOOLS](https://github.com/nealalan/command/blob/master/README.md#dev-tools-code--scripting)
+- [ENCRYPTION](https://github.com/nealalan/command/blob/master/README.md#encryption)
+- [FILES](https://github.com/nealalan/command/blob/master/README.md#files) - zip, transfer
+- [FONTS](https://github.com/nealalan/command/blob/master/README.md#fonts)
+- [GIT](https://github.com/nealalan/command/blob/master/README.md#git)
+- [IMAGES & GRAPHICS](https://github.com/nealalan/command/blob/master/README.md#images--graphics)
+- [MONITORING](https://github.com/nealalan/command/blob/master/README.md#monitoring)
+- [MySQL / MariaDB](https://github.com/nealalan/command/blob/master/README.md#mysql--mariadb)
+- [NETWORKING](https://github.com/nealalan/command/blob/master/README.md#networking)
+- [PACKAGE MANAGERS](https://github.com/nealalan/command/blob/master/README.md#package-managers)
+- [PM2](https://github.com/nealalan/command/blob/master/README.md#pm2---advanced-production-process-manager-for-nodejs-wikipedia-git)
+- POSTGRES
+- [SEARCHING](https://github.com/nealalan/command/blob/master/README.md#searching)
+- [TOOLS & SOFTWARE](https://github.com/nealalan/command/blob/master/README.md#tools--software) (aka other)
+- [WORDPRESS](https://github.com/nealalan/command/blob/master/README.md#wordpress)
 
-- [An A-Z Index of the Apple macOS command line (OS X)](https://ss64.com/osx/)
 
 ## COMMANDS 101 
+- [An A-Z Index of the Apple macOS command line (OS X)](https://ss64.com/osx/)
+
 FIRST
 Change the command line to something civil and meaningful.
 Regarding editing... I started using [PICO editor](https://en.wikipedia.org/wiki/Pico_(text_editor)) in 1992 or 1993. It's now deprecated to [NANO editor](https://en.wikipedia.org/wiki/Pico_(text_editor)) - something REALLY FANCY is you can add -m to use the MOUSE!!!
@@ -922,9 +944,16 @@ $ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd
 $ systemctl status pm2-ubuntu
 ```
 
+## POSTGRES
 
-[edit](https://github.com/nealalan/api-stuff-201901/edit/master/readme.md)
+#### Switching Over to the postgres Account
+Switch over to the postgres account and access a Postgres prompt immediately by typing:
 
+```bash
+$ sudo -i -u postgres
+$ psql
+```
+Exit out of the PostgreSQL prompt by typing: `\q`
 
 
 ## SEARCHING
@@ -1058,13 +1087,13 @@ brew install vbindiff
 brew install zopfli
 ```
 
+#### More Useful CLI tools
+- xmodulo.com/useful-cli-tools-linux-system-admins.html
+
 ## WORDPRESS
 - wordpress-online-vulnerabilitty-scanners
 <br><br>
 
-
-## More Useful CLI tools
-- xmodulo.com/useful-cli-tools-linux-system-admins.html
 
 
 [[edit](https://github.com/nealalan/command/edit/master/README.md)]
