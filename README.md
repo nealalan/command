@@ -945,6 +945,7 @@ $ systemctl status pm2-ubuntu
 ```
 
 ## POSTGRES
+- lab: [how-to-install-and-use-postgresql-on-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
 
 #### Switching Over to the postgres Account
 Switch over to the postgres account and access a Postgres prompt immediately by typing:
