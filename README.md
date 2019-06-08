@@ -171,6 +171,7 @@ $ sudo nano /etc/ssh/sshd_config
 
 ```
 CHGRP - Group Ownership
+
 ```bash
 # CHGRP - change group ownership
 # Change the group of /u and subfiles to "admin".
@@ -182,6 +183,7 @@ $ chgrp -hR nealalan.com .
 ## AUDIO / VIDEO
 MP3 Audio and MP4 Video downloader
 - I recommend not installing youtube-dl using pip... if you did use `pip uninstall youtube-dl` to remove it
+
 ```bash
 # INSTALL:
 $ brew install youtube-dl
@@ -195,11 +197,11 @@ $ youtube-dl -f best <https://link>
 ```
 
 - With the war between youtube and youtube-dl... I found Homebrew didn't always install the latest. To install directly from youtube-dl (Note: this won't use a package manager!!!)
+
 ```bash
 $ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 $ sudo chmod a+rx /usr/local/bin/youtube-dl
 ```
-
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.46.35.jpg?raw=true)
 
 ```bash
@@ -209,6 +211,7 @@ $ youtube-dl --extract-audio --audio-format mp3 --audio-quality 320K <https://li
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.52.49.jpg?raw=true)
 
 Audio / Video player install
+
 ```bash
 # Install MPV https://mpv.io/installation/
 $ brew install mpv
