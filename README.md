@@ -521,6 +521,17 @@ n is a node version manager: https://github.com/tj/n
 $ brew install node npm n
 $ sudo n lts
 ```
+Check them:
+```bash
+$ node -v
+$ n
+$ npm -v
+```
+
+### TESTEM
+```bash
+$ npm install testem -g
+```
 
 
 ### PYTHON
