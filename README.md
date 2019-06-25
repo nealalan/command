@@ -14,7 +14,6 @@ TOC:
 - [GIT](https://github.com/nealalan/command/blob/master/README.md#git)
 - [IMAGES & GRAPHICS](https://github.com/nealalan/command/blob/master/README.md#images--graphics)
 - [MONITORING](https://github.com/nealalan/command/blob/master/README.md#monitoring)
-- [MySQL / MariaDB](https://github.com/nealalan/command/blob/master/README.md#mysql--mariadb)
 - [NETWORKING](https://github.com/nealalan/command/blob/master/README.md#networking)
 - [PACKAGE MANAGERS](https://github.com/nealalan/command/blob/master/README.md#package-managers)
 - [PM2](https://github.com/nealalan/command/blob/master/README.md#pm2---advanced-production-process-manager-for-nodejs-wikipedia-git)
@@ -513,6 +512,16 @@ apache maven will build your jar files from java source packages.
 $ mvn package
 # you should end up with BUILD SUCCESSFUL and a folder project-dir/target/
 ```
+
+### NODE, NPM, N
+
+n is a node version manager: https://github.com/tj/n
+
+```bash
+$ brew install node npm n
+$ sudo n lts
+```
+
 
 ### PYTHON
 PACKAGE MANAGER FOR PYTHON
