@@ -499,6 +499,7 @@ $ set TARGETURI /cgi-bin/test-cgi
 - [Bash Scripting Cheatsheet](https://devhints.io/bash)
 - [Wikibooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting)
 
+
 ### SCRIPTING
 ```bash
 # Don't forget:
@@ -533,6 +534,11 @@ $ npm -v
 $ npm install testem -g
 ```
 
+### LINTER
+```bash
+$ npm install -g eslint eslint-config-fullstack eslint-plugin-react babel-eslint
+# ADD ESLint extension to VSCode
+```
 
 ### PYTHON
 PACKAGE MANAGER FOR PYTHON
