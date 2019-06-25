@@ -635,9 +635,13 @@ $ sudo chmod -R 775 .git  # change permission
 ```
 
 ### git setup
+https://help.github.com/en/articles/connecting-to-github-with-ssh
+
 ```bash
 # CREATE SSH KEY TO ADD TO GITHUB
 $ ssh-keygen -t rsa -C "neal@email.com"
+$ eval "$(ssh-agent -s)"
+$ ssh-add -K ~/.ssh/id_rsa
 
 # TEST OUT THE SSH CONNECTION ON YOUR BOX
 $ ssh -T git@github.com
