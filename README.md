@@ -570,6 +570,11 @@ $ brew reinstall gnupg
 $ gpg --version
 $ gpg -K
 ```
+Generate a Public key from a Private key
+```bash
+# extract the public key and store
+openssl rsa -in mykey.pem -pubout > mykey.pub
+```
 
 ## FILES
 ```bash
