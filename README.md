@@ -1129,6 +1129,23 @@ brew install zopfli
 
 ## Web Servers
 
+### CertBot
+See what certs we have and expiry:
+```bash
+$ sudo certbot certificates
+```
+
+To update email with certbot:
+```bash
+$ sudo certbot update_account --update-registration --email thenew@email.address
+```
+
+Updating with wildcards proved to be a challenge. I ended up having many certificates and NGINX confused the certs in the config file because domain.com and \*.domain.com had different cert. I cleaned them and ended up needing to add a new TXT DNS record called "\_acme-challenge.neonaluminum.com" to verify I owned the domain.
+
+```bash
+$ sudo certbot --server https://acme-v02.api.letsencrypt.org/directory -d neonaluminum.com,*.neonaluminum.com,*.fire.neonaluminum.com --manual --preferred-challenges dns-01 certonly
+```
+
 ### NGINX
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3EFXE48c5ZLwr23GFqzHvJ827UnmVpXhvj5P2YjpYyrTY8CzA&s)
 
