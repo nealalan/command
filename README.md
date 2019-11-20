@@ -20,7 +20,7 @@ TOC:
 - POSTGRES
 - [SEARCHING](https://github.com/nealalan/command/blob/master/README.md#searching)
 - [TOOLS & SOFTWARE](https://github.com/nealalan/command/blob/master/README.md#tools--software) (aka other)
-- [WEB SERVER](https://github.com/nealalan/command/blob/master/README.md#web-server)
+- [WEB SERVER](https://github.com/nealalan/command/blob/master/README.md#web-servers)
 - [WORDPRESS](https://github.com/nealalan/command/blob/master/README.md#wordpress)
 
 
@@ -1130,6 +1130,7 @@ brew install zopfli
 ## Web Servers
 
 ### NGINX
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3EFXE48c5ZLwr23GFqzHvJ827UnmVpXhvj5P2YjpYyrTY8CzA&s)
 
 View status
 ```bash
