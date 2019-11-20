@@ -20,6 +20,7 @@ TOC:
 - POSTGRES
 - [SEARCHING](https://github.com/nealalan/command/blob/master/README.md#searching)
 - [TOOLS & SOFTWARE](https://github.com/nealalan/command/blob/master/README.md#tools--software) (aka other)
+- [WEB SERVER](https://github.com/nealalan/command/blob/master/README.md#web-server)
 - [WORDPRESS](https://github.com/nealalan/command/blob/master/README.md#wordpress)
 
 
@@ -1124,6 +1125,46 @@ brew install ssh-copy-id
 brew install tree
 brew install vbindiff
 brew install zopfli
+```
+
+## Web Servers
+
+### NGINX
+
+View status
+```bash
+$ sudo service status nginx
+$ sudo systemctl status nginx
+$ sudo systemctl status nginx.service
+$ sudo journalctl -xe
+# error messages... testing (or testing with a specific config file
+$ nginx -t
+$ nginx -c /etc/nginx/nginx.conf -t
+```
+
+Viewing the logs
+```bash
+$ sudo tail -f /var/log/nginx/error.log 
+```
+
+Reload nginx server after you made changes to the config file such as nginx.conf:
+```bash
+$ sudo nginx -s reload
+$ sudo systemctl reload nginx
+$ sudo service nginx reload
+```
+
+Stopping and starting... some options
+```bash
+$ sudo systemctl start nginx 
+$ sudo systemctl stop nginx 
+$ sudo systemctl restart nginx
+$ sudo service nginx start
+$ sudo service nginx stop
+$ sudo service nginx restart
+$ sudo /etc/init.d/nginx start
+$ sudo /etc/init.d/nginx stop
+$ sudo /etc/init.d/nginx restart
 ```
 
 #### More Useful CLI tools
