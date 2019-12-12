@@ -618,28 +618,15 @@ brew install woff2
 ```
 
 ## GIT
-First time using a repo
-…or create a new repository on the command line
-```bash
-echo "# neonaluminum.com" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:nealalan/neonaluminum.com.git
-git push -u origin master
-```
-…or push an existing repository from the command line
-```bash
-git remote add origin git@github.com:nealalan/neonaluminum.com.git
-git push -u origin master
-```
+
 Regular daily use
 ```bash
 $ git status
+$ git pull
 $ git push
 $ git clone git@github.com:nealalan/command.git
-
 ```
+
 a trick i found on stackoverflow when .git/index.lock gives Permission Denied
 ```bash
 $ sudo chown -R : .git  # change group
@@ -649,19 +636,56 @@ $ sudo chmod -R 775 .git  # change permission
 ### git setup
 https://help.github.com/en/articles/connecting-to-github-with-ssh
 
+#### 1) Install on Ubuntu 18.04:
 ```bash
-# CREATE SSH KEY TO ADD TO GITHUB
-$ ssh-keygen -t rsa -C "neal@email.com"
+$ sudo apt install git git-gui git-doc
+$ git version
+# setup git
+$ sudo git config --global --edit
+```
+#### 2) Create Keypair
+Tips:
+- create the keypair using the @users.noreply.github.com found in [Github: Settings: Emails](https://github.com/settings/emails). 
+- it's smart to be in the ~/.ssh folder and name the keypair github_keypair
+```bash
+$ ssh-keygen -t rsa -C "neal@users.noreply.github.com"
+```
+Check the ssh-agent is running and add the key identity
+```bash
 $ eval "$(ssh-agent -s)"
-$ ssh-add -K ~/.ssh/id_rsa
-
-# TEST OUT THE SSH CONNECTION ON YOUR BOX
+$ ssh-add -k ~/.ssh/github_keypair
+```
+#### 3) Add the Keypair to [GitHub SSH and GPG Keys](https://github.com/settings/keys)
+Print out the PRIVATE key to copy and paste into GitHub. I name it something like "Ubuntu 2019-12-31" to I know what it is and if it's current.
+```bash
+cat ~/.ssh/github_keypair
+```
+Verify the keypair is added to github:
+```bash
 $ ssh -T git@github.com
-
-# SET AN HTTPS CLONE TO AN SSH PUSH
-# so i pulled down something before I setup ssh and made a bunch of changes 
-# i wanted to push back. so I used this command to changed it to SSH push
+```
+You should see a message "Hi x! You've successfully authenticated, but GitHub does not provide shell access.
+#### 4) If you cloned a repo already, you need ot set it to the correct repo using SSH
+```bash
 $ git remote set-url origin git@github.com:nealalan/nealalan.com.git
+```
+
+#### 5) If you only created a new repo on github
+*First time using a repo… or create a new repository on the command line:*
+```bash
+# create a file and add the remote repo
+echo "# nealalan.com" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:nealalan/nealalan.com.git
+git push -u origin master
+```
+#### 6) When you make changes to the repo
+*…or push an existing repository from the command line*
+```bash
+git remote add origin git@github.com:nealalan/nealalan.com.git
+git push -u origin master
 ```
 
 ### hub
