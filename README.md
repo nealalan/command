@@ -233,6 +233,12 @@ $ mpv <file.mp4>
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.53.47.jpg?raw=true)
 ![](https://github.com/nealalan/command/blob/master/images/Screen%20Shot%202018-10-17%20at%2001.47.36.jpg?raw=true)
 
+### Compress video - .mkv
+I started with a 57 minute show that was 3814 meg and compressed to 280 meg in 12 minutes.
+```bash
+ffmpeg -n -i input.mkv -vcodec libx264 -crf 28 -preset faster -tune film output.mkv
+```
+
 ## AWS
 AWS & [LOCALSTACK](https://github.com/localstack/localstack)
 ```bash
