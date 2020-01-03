@@ -654,17 +654,17 @@ Tips:
 - create the keypair using the @users.noreply.github.com found in [Github: Settings: Emails](https://github.com/settings/emails). 
 - it's smart to be in the ~/.ssh folder and name the keypair github_keypair
 ```bash
-$ ssh-keygen -t rsa -C "neal@users.noreply.github.com"
+$ ssh-keygen -t rsa -b 4096 -C "neal@users.noreply.github.com"
 ```
 Check the ssh-agent is running and add the key identity
 ```bash
 $ eval "$(ssh-agent -s)"
-$ ssh-add -k ~/.ssh/github_keypair
+$ ssh-add -k ~/.ssh/id_rsa
 ```
 #### 3) Add the Keypair to [GitHub SSH and GPG Keys](https://github.com/settings/keys)
 Print out the PRIVATE key to copy and paste into GitHub. I name it something like "Ubuntu 2019-12-31" to I know what it is and if it's current.
 ```bash
-cat ~/.ssh/github_keypair
+cat ~/.ssh/id_rsa.pub
 ```
 Verify the keypair is added to github:
 ```bash
@@ -692,6 +692,11 @@ git push -u origin master
 ```bash
 git remote add origin git@github.com:nealalan/nealalan.com.git
 git push -u origin master
+```
+NOTE: If you have problems with permission denied, it could have to do with the ownership of the local files. Set the ownership to:
+
+```
+$ sudo chown -R ubuntu:ubuntu /var/www/
 ```
 
 ### hub
