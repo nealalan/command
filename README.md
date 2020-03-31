@@ -8,6 +8,7 @@ TOC:
 - [CONFIGURATIONS](https://github.com/nealalan/command/blob/master/README.md#configurations) (systems)
 - [CTF / DEVSEC / PENTEST](https://github.com/nealalan/command/blob/master/README.md#ctf--devsec--pentest)
 - [DEV TOOLS](https://github.com/nealalan/command/blob/master/README.md#dev-tools-code--scripting)
+- [DOCKER](https://github.com/nealalan/command/blob/master/README.md#docker)
 - [ENCRYPTION](https://github.com/nealalan/command/blob/master/README.md#encryption)
 - [FILES](https://github.com/nealalan/command/blob/master/README.md#files) - zip, transfer
 - [FONTS](https://github.com/nealalan/command/blob/master/README.md#fonts)
@@ -131,9 +132,14 @@ $ curl https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.p
 
 
 ## ACCOUNTS / SYS ADMINISTRATION
+OS Version
 ```bash
-ubuntu@nealalan:~$ uname -a
+$ ubuntu@nealalan:~$ uname -a
 Linux nealalan 4.4.0-1060-#69-Ubuntu SMP Sun May 20 13:42:07 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+```
+OS Release Version (centos)
+```
+$ cat /etc/centos-release
 ```
 Change to root
 ```bash
@@ -559,6 +565,18 @@ $ sudo easy_install pip
 
 ### SQL
 - sqlmap
+
+## DOCKER
+First, download and start Docker GUI (Mac). Once started you can use `$ docker` from the terminal.
+
+Pull and Launch CentOS to CLI
+```
+$ docker pull centos
+$ docker run -it centos
+```
+If you try and run centos without a TTY, it will launch and quit.
+
+
 
 ## ENCRYPTION
 
