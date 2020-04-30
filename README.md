@@ -58,6 +58,12 @@ $ cat cat.txt cat.txt > 2cats.txt
 # On a linux distro besides Mac / Darwin, try
 $ cat /etc/os-release
 ```
+DATE = GENERATE A 16 CHAR RANDOM PASSWORD
+```
+$ date | md5 | tail -c16
+# if pwgen installed
+$ pwgen 16 -ncy
+```
 HEAD (display the first lines of a file) & TAIL (display the last part of a file)
 ```bash
 # head [-n count | -c bytes] [file ...]
@@ -84,6 +90,10 @@ LOCATE
 EXPORT
 ```bash
 $ export PATH=$PATH:$HOME/.local/bin
+```
+JQ - Command Line JSON PARSER
+```
+$ echo '{"foo": 0}' | jq .
 ```
 LINK, LN, See also: [ln command](https://www.computerhope.com/unix/uln.htm)
 ```bash
@@ -440,6 +450,8 @@ $ curl -s4 ifconfig.co | toilet -w 140 -f mono12
 #  -tu tcp & udp
 $ netstat
 $ netstat -a | more
+# List active internet connections
+$ netstat -plnt
 ```
 ### SS
 ```bash
@@ -463,6 +475,8 @@ $ dig neonaluminum.com
 $ dig +trace neonaluminum.com
 # pull the DNS records (use A, TXT, MX, SOA, NS, ANY)
 $ dig neonaluminum.com ANY +noall +answer
+# from google, expanded lines
+$ dig @8.8.8.8 +nocmd neonaluminum.com any +multiline +noall +answer
 ```
 
 ### WHOIS - QUERY IANA.ORG FOR DOMAIN INFO
