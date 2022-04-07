@@ -264,6 +264,14 @@ $ pip install localstack
 # USE:
 ```
 
+```
+# Using prowler for security checks and debugging
+# - this command will search for all SGs in an account and output bash debug
+$ bash -x ./prowler -c extra75 -m 200 > debug.log 2>&1
+
+```
+
+
 ## CONFIGURATIONS 
 ### MacOS / Darwin Specific
 APPLE XCODE COMMAND LINE DEVELOPMENT
